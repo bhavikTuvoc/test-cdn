@@ -178,6 +178,7 @@ window.toggleApp = () => {
   const e = document.querySelector(".app-container");
   e.style.display = e.style.display === "none" ? "block" : "none";
 };
+window.toggleApp();
 const v = document.createElement("div");
 document.body.appendChild(v);
 a.render(/* @__PURE__ */ A.jsx(d, {}), v);
