@@ -14,8 +14,7 @@ function App() {
 
 window.toggleApp = () => {
   const appContainer = document.querySelector(".app-container") as HTMLElement; // Cast directly
-  appContainer.style.display =
-    appContainer.style.display === "none" ? "block" : "none";
+  appContainer.style.display === "none" ? "block" : "none";
 };
 
 window.toggleApp();
