@@ -20,7 +20,7 @@ export default defineConfig({
     },
     rollupOptions: {
       // Externalize peer dependencies
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", "tailwindcss"],
       output: {
         // Provide global variables to use in the UMD build
         globals: {
