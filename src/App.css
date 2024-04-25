@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+  font-family: "Inter", sans-serif;
+}
+
+:root {
+  --primarColor: #6f3798;
+  --primaryColorHover: rgb(138 103 163);
+  --indicatorColor: rgb(234, 236, 240);
+  --textPrimary: #6941c6;
+  --textSecondry: #7f56d9;
+  --textNormal: #344054;
+  --textNormalSec: #475467;
+  --primaryBtnBg: #7f56d9;
+}
+
+.textPrimary {
+  color: var(--textPrimary);
+}
+.textSecondry {
+  color: var(--textSecondry);
+}
+
+.textNormal {
+  color: var(--textNormal);
+}
+
+.textNormalSec {
+  color: var(--textNormalSec);
+}
+
+.bgPrimary {
+  background-color: var(--primarColor);
+}
+
+.bgIndicatorColor {
+  background-color: var(--indicatorColor);
+}
+
+.App {
+  width: 100dvw !important;
+  height: 100dvh !important;
+  background-image: url("https://images-platform.99static.com//bDfjACPHvzyWVlrc0bNhC9xLS2k=/0x0:1920x1920/fit-in/500x500/99designs-contests-attachments/95/95980/attachment_95980253");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bgBlur {
+  background: rgba(16, 15, 15, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn {
+  padding: 16px 22px;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0px 1px 2px 0px #1018280d;
+}
+
+.btnPrimary {
+  background-color: var(--primaryBtnBg);
+}
+
+.btn:focus {
+  box-shadow: none !important;
+}
