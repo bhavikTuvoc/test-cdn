@@ -18,6 +18,8 @@ window.toggleApp = () => {
     appContainer.style.display === "none" ? "block" : "none";
 };
 
+window.toggleApp();
+
 // Example of mounting the app if not already shown
 const rootElement = document.createElement("div");
 document.body.appendChild(rootElement);
