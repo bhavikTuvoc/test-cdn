@@ -12,13 +12,30 @@ function App() {
   );
 }
 
-window.toggleApp = () => {
-  const appContainer = document.querySelector(".app-container") as HTMLElement; // Cast directly
-  appContainer.style.display =
-    appContainer.style.display === "none" ? "block" : "none";
+// window.toggleApp = () => {
+//   const appContainer = document.querySelector(".app-container") as HTMLElement; // Cast directly
+//   appContainer.style.display =
+//     appContainer.style.display === "none" ? "block" : "none";
+// };
+
+// window.toggleApp();
+
+const toggleApp = () => {
+  const appContainer = document.querySelector(".app-container");
+  if (appContainer instanceof HTMLElement) {
+    appContainer.style.display =
+      appContainer.style.display === "none" ? "block" : "none";
+  }
 };
 
-window.toggleApp();
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButtons: any = document.getElementById("#toggleAppButton");
+  toggleButtons.forEach((button: any) => {
+    button.addEventListener("click", toggleApp);
+  });
+});
+
+toggleApp();
 
 // Example of mounting the app if not already shown
 const rootElement = document.createElement("div");
