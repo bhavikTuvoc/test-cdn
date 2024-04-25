@@ -12,16 +12,33 @@ function App() {
   );
 }
 
-window.toggleApp = () => {
-  const appContainer = document.querySelector(".app-container") as HTMLElement; // Cast directly
-  appContainer.style.display === "none" ? "block" : "none";
-};
+// This function sets up and initializes the application
+function setupApp() {
+  const rootElement = document.createElement("div");
+  document.body.appendChild(rootElement);
+  ReactDOM.render(<App />, rootElement);
 
-window.toggleApp();
+  window.toggleApp = () => {
+    const appContainer = document.querySelector(
+      ".app-container"
+    ) as HTMLElement;
+    if (appContainer) {
+      appContainer.style.display =
+        appContainer.style.display === "none" ? "block" : "none";
+    }
+  };
 
-// Example of mounting the app if not already shown
-const rootElement = document.createElement("div");
-document.body.appendChild(rootElement);
-ReactDOM.render(<App />, rootElement);
+  // Optionally, you can toggle the app to show or hide it initially here
+  window.toggleApp();
+}
+
+// Ensure everything is loaded and ready
+if (document.readyState === "loading") {
+  // Loading hasn't finished yet
+  document.addEventListener("DOMContentLoaded", setupApp);
+} else {
+  // `DOMContentLoaded` has already fired
+  setupApp();
+}
 
 export default App;
