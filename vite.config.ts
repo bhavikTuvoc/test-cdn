@@ -9,7 +9,7 @@ export default defineConfig({
     outDir: "dist",
     lib: {
       entry: "./src/main.tsx",
-      name: "App",
+      name: "purple",
       // The file formats to output (UMD and ESM common formats for libraries)
       formats: ["umd", "es"],
     },
