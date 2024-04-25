@@ -21,11 +21,9 @@ function App() {
 // window.toggleApp();
 
 const toggleApp = () => {
-  const appContainer = document.querySelector(".app-container");
-  if (appContainer instanceof HTMLElement) {
-    appContainer.style.display =
-      appContainer.style.display === "none" ? "block" : "none";
-  }
+  const appContainer = document.querySelector(".app-container") as HTMLElement;
+  appContainer.style.display =
+    appContainer.style.display === "none" ? "block" : "none";
 };
 
 document.addEventListener("DOMContentLoaded", () => {
