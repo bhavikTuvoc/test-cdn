@@ -38,7 +38,7 @@ const PopUp = ({}: Props) => {
   ];
 
   return (
-    <form className="max-w-[960px] w-[100%] h-[738px] bg-white rounded-[24px] md:p-[24px] p-[10px] flex flex-col justify-center items-center md:gap-[24px] gap-[10px]">
+    <form className="formContainer">
       <div className="flex md:flex-row flex-col w-full h-full justify-center items-center md:gap-[24px] gap-[10px] border-b border-[#D0D5DD] md:pb-[24px]">
         {/* left */}
         <div className="flex-[0.36] h-full w-full flex flex-col border-r border-[#D0D5DD]">
