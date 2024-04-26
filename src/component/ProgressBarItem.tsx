@@ -24,11 +24,13 @@ const ProgressBarItem = ({
         );
       case "Active":
         return (
-          <img
-            src={ActiveIndicator}
-            alt="active"
-            className="w-[32px] h-[32px]"
-          />
+          <div className="indicatorShadow rounded-full">
+            <img
+              src={ActiveIndicator}
+              alt="active"
+              className="w-[32px] h-[32px] "
+            />
+          </div>
         );
       case "Completed":
         return (
@@ -58,9 +60,9 @@ const ProgressBarItem = ({
 
           {/*line baar*/}
           {flag === "Active" || flag === "Completed" ? (
-            <div className={`w-[2px] h-[46px] bgPrimary`} />
+            <div className={`w-[2px] h-[46px] bgPrimary mt-[4px]`} />
           ) : (
-            <div className={`w-[2px] h-[46px] bgIndicatorColor`} />
+            <div className={`w-[2px] h-[46px] bgIndicatorColor mt-[4px]`} />
           )}
         </div>
       </div>

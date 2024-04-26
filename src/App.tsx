@@ -4,7 +4,8 @@ import PopUp from "./component/PopUp";
 
 function App() {
   return (
-    <div className="App app-container" style={{ display: "none" }}>
+    // <div className="App app-container" style={{ display: "none" }}>
+    <div className="App app-container" style={{ display: "block" }}>
       <div className="w-full mx-auto h-screen bgBlur flex justify-center items-center">
         <PopUp />
       </div>

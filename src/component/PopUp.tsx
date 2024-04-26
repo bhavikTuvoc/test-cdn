@@ -13,12 +13,12 @@ const PopUp = ({}: Props) => {
     {
       label: "Details",
       detail: "Provide details",
-      flag: "Active" as const,
+      flag: "Completed" as const,
     },
     {
       label: "Photo",
       detail: "Upload photo",
-      flag: "Default" as const,
+      flag: "Active" as const,
     },
     {
       label: "Customer",

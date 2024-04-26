@@ -43,9 +43,9 @@
 .App {
   width: 100dvw !important;
   height: 100dvh !important;
-  /* background-image: url("https://images-platform.99static.com//bDfjACPHvzyWVlrc0bNhC9xLS2k=/0x0:1920x1920/fit-in/500x500/99designs-contests-attachments/95/95980/attachment_95980253"); */
-  /* background-size: cover; */
-  /* background-repeat: no-repeat; */
+  background-image: url("https://images-platform.99static.com//bDfjACPHvzyWVlrc0bNhC9xLS2k=/0x0:1920x1920/fit-in/500x500/99designs-contests-attachments/95/95980/attachment_95980253");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .bgBlur {
   background: rgba(16, 15, 15, 0.3);
@@ -69,4 +69,75 @@
 
 .btn:focus {
   box-shadow: none !important;
+}
+
+.indicatorShadow {
+  box-shadow: 0px 0px 0px 4px #9e77ed3d;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.h-screen {
+  height: 100vh;
+}
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+.items-center {
+  align-items: center;
+}
+.max-w-\[960px\] {
+  max-width: 960px;
+}
+
+.w-\[100\%\] {
+  width: 100%;
+}
+
+.h-\[738px\] {
+  height: 738px;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.rounded-\[24px\] {
+  border-radius: 24px;
+}
+
+@media (min-width: 768px) {
+  .md\:p-\[24px\] {
+    padding: 24px;
+  }
+}
+
+.p-\[10px\] {
+  padding: 10px;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .md\:gap-\[24px\] {
+    gap: 24px;
+  }
+}
+
+.gap-\[10px\] {
+  gap: 10px;
 }
