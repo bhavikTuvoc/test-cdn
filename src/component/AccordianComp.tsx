@@ -2,7 +2,7 @@ import { SubCategory } from "./types";
 import upArrow from "../assets/chevron-up.svg";
 import downArrow from "../assets/chevron-down.svg";
 import HeatingImg from "../assets/Heating.svg";
-import uncheckCircle from "../assets/un-check.svg";
+// import uncheckCircle from "../assets/un-check.svg";
 import checkCircle from "../assets/check-circle.svg";
 
 type Props = {
