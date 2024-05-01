@@ -352,7 +352,7 @@ const x = "data:image/svg+xml,%3csvg%20width='134'%20height='50'%20viewBox='0%20
 function W() {
   return (
     // <div className="App app-container" style={{ display: "none" }}>
-    /* @__PURE__ */ A.jsx("div", { className: "App app-container", style: { display: "block" }, children: /* @__PURE__ */ A.jsx("div", { className: "bgBlur popUpWrapper bgRed", children: /* @__PURE__ */ A.jsx(D, {}) }) })
+    /* @__PURE__ */ A.jsx("div", { className: "App app-container", style: { display: "block" }, children: /* @__PURE__ */ A.jsx("div", { className: "bgBlur popUpWrapper", children: /* @__PURE__ */ A.jsx(D, {}) }) })
   );
 }
 function u() {
