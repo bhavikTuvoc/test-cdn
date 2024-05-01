@@ -116,6 +116,47 @@ const PopUp = ({}: Props) => {
             { id: "Other/Not Sure", subItem: "Other/Not Sure", checked: false },
           ],
         },
+        {
+          item: "What is the approximate age of your system ?",
+          subCategories: [
+            {
+              id: "Less than 5 years old",
+              subItem: "Less than 5 years old",
+              checked: false,
+            },
+            {
+              id: "6 To 9 years old",
+              subItem: "6 To 9 years old",
+              checked: false,
+            },
+            {
+              id: "10 To 13 years old",
+              subItem: "10 To 13 years old",
+              checked: false,
+            },
+            {
+              id: "Over 14 years old",
+              subItem: "Over 14 years old",
+              checked: false,
+            },
+            { id: "Not Sure", subItem: "Not Sure", checked: false },
+          ],
+        },
+      ],
+    },
+    {
+      label: "Photo",
+      id: "Photo",
+      checked: false,
+      categoryType: "Photo",
+      header: "Upload photos",
+      category: [
+        {
+          item: "Upload your photos here!",
+          subCategories: [
+            { id: "Heat Pump", subItem: "Heat Pump", checked: false },
+          ],
+        },
       ],
     },
   ];
@@ -179,7 +220,8 @@ const PopUp = ({}: Props) => {
           </div>
           <RightCategoryComp
             active={active}
-            data={IndividualDetail[0]}
+            data={IndividualDetail.find((detail) => detail.id === currentId)}
+            // data={IndividualDetail[0]}
             toggleHandleAccordian={toggleHandleAccordian}
           />
         </div>
