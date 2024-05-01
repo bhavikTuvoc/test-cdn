@@ -6,7 +6,7 @@ function App() {
   return (
     // <div className="App app-container" style={{ display: "none" }}>
     <div className="App app-container" style={{ display: "block" }}>
-      <div className="bgBlur popUpWrapper">
+      <div className="bgBlur popUpWrapper bgRed">
         <PopUp />
       </div>
     </div>
