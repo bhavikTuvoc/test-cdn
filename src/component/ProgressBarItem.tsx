@@ -5,71 +5,67 @@ type Props = {
   label?: string;
   detail?: string;
   flag?: "Default" | "Active" | "Completed";
+  lastItem?: boolean;
 };
 
 const ProgressBarItem = ({
   label = "Services",
   detail = "Select Issues",
   flag = "Default",
+  lastItem = false,
 }: Props) => {
   const renderContentBasedOnFlag = () => {
     switch (flag) {
       case "Default":
         return (
-          <img
-            src={DefaultIndicator}
-            alt="active"
-            className="w-[32px] h-[32px]"
-          />
+          <img src={DefaultIndicator} alt="default" className="indicatorWH" />
         );
       case "Active":
         return (
-          <div className="indicatorShadow rounded-full">
-            <img
-              src={ActiveIndicator}
-              alt="active"
-              className="w-[32px] h-[32px] "
-            />
+          <div className="indicatorShadow rounded-full indicatorWH">
+            <img src={ActiveIndicator} alt="active" className="indicatorWH " />
           </div>
         );
       case "Completed":
         return (
           <img
             src={CompletedIndicator}
-            alt="active"
-            className="w-[32px] h-[32px]"
+            alt="Completed"
+            className="indicatorWH"
           />
         );
       default:
         return (
-          <img
-            src={DefaultIndicator}
-            alt="active"
-            className="w-[32px] h-[32px]"
-          />
+          <img src={DefaultIndicator} alt="active" className="indicatorWH" />
         );
     }
   };
   return (
-    <div className="w-full h-[86px] md:gap-[16px] gap-[10px] flex">
+    <div className="indiDiv">
       {/* left */}
-      <div className="w-[32px] flex-shrink-0">
-        <div className="flex flex-col justify-start items-center">
+      <div className="indicatorLeft">
+        <div className="innerDiv">
           {/* indicator rendere */}
           {renderContentBasedOnFlag()}
 
           {/*line baar*/}
-          {flag === "Active" || flag === "Completed" ? (
-            <div className={`w-[2px] h-[46px] bgPrimary mt-[4px]`} />
+          {flag === "Completed" ? (
+            <div
+              className={`lineBar bgPrimary mobileNone`}
+              style={{ display: lastItem ? "none" : "" }}
+            />
           ) : (
-            <div className={`w-[2px] h-[46px] bgIndicatorColor mt-[4px]`} />
+            <div
+              className={`lineBar bgIndicatorColor mobileNone`}
+              style={{ display: lastItem ? "none" : "" }}
+            />
           )}
         </div>
       </div>
       {/* right */}
-      <div className="flex-1">
+      <div className="indicatorRight">
         <div
-          className={`text-[16px] font-[600] ${
+          className={`indicatorHeader ${
             flag === "Active" || flag === "Completed"
               ? "textPrimary"
               : "textNormal"
@@ -78,7 +74,7 @@ const ProgressBarItem = ({
           {label}
         </div>
         <div
-          className={`text-[16px] font-[400] ${
+          className={`indicatorDetail ${
             flag === "Active" || flag === "Completed"
               ? "textSecondry"
               : "textNormalSec"

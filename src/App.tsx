@@ -33,6 +33,14 @@ function setupApp() {
   window.toggleApp();
 }
 
+export const handleClose = () => {
+  const appContainer = document.querySelector(".app-container") as HTMLElement;
+  if (appContainer) {
+    appContainer.style.display =
+      appContainer.style.display === "none" ? "block" : "none";
+  }
+};
+
 // Ensure everything is loaded and ready
 if (document.readyState === "loading") {
   // Loading hasn't finished yet
