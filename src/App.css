@@ -330,6 +330,7 @@ button {
 
 @media (min-width: 768px) {
   .formBodyLeft {
+    position: relative;
     flex: 0.36;
     border-right: 1px solid var(--grayAmoutColor);
     height: 100%;
