@@ -185,11 +185,16 @@ button {
 }
 
 .formBodyLeft {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 8px 16px;
   border-top: 1px solid var(--grayAmoutColor);
+  z-index: 5;
+  background-color: #fff;
 }
 
 .formBodyRight {
@@ -199,6 +204,7 @@ button {
   padding-inline: 16px;
   padding-block: 8px 5px;
   overflow-y: auto;
+  padding-bottom: 55px;
 }
 .formBodyBottom {
   display: none;
