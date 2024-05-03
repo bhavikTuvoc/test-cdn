@@ -56,8 +56,8 @@ body {
 } */
 
 .App {
-  width: 100dvw !important;
-  height: 100dvh !important;
+  width: 100vw !important;
+  height: 100vh !important;
   position: fixed;
   top: 0;
   left: 0;
