@@ -195,7 +195,7 @@ button {
 .formBodyRight {
   flex: 1;
   width: 100%;
-  height: calc(100vh - 53px);
+  height: calc(100dvh - 53px);
   padding-inline: 16px;
   padding-block: 8px 5px;
   overflow-y: auto;
