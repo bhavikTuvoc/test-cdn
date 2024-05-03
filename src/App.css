@@ -59,10 +59,10 @@ body {
   width: 100dvw !important;
   height: 100dvh !important;
   overflow-y: auto;
-  /* position: fixed;
+  position: absolute;
   top: 0;
-  left: 0;
-  right: 0; */
+  /* left: 0; */
+  /* right: 0; */
 }
 
 button {
