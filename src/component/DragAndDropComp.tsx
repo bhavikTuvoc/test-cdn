@@ -1,41 +1,48 @@
 import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import dropIcon from "../assets/Featured icon.svg";
 import { imageData } from "./PhotosComp";
-
-interface FormData {
-  files: File[]; // Using File[]
-}
 
 interface DragAndDropCompProps {
   allowMultiple?: boolean;
   onFileData?: (files: imageData[]) => void; // Callback to handle additional file data processing
+  inputRef: any;
+  setValue: any;
+  control: any;
+}
+
+function formatFileSize(bytes: number) {
+  if (bytes >= 1048576) {
+    return (bytes / 1048576).toFixed(2) + " MB"; // Megabytes
+  } else if (bytes >= 1024) {
+    return (bytes / 1024).toFixed(2) + " KB"; // Kilobytes
+  } else {
+    return bytes + " bytes";
+  }
 }
 
 const DragAndDropComp: React.FC<DragAndDropCompProps> = ({
   allowMultiple = true,
   onFileData,
+  inputRef,
+  setValue,
+  control,
 }) => {
-  const { control, setValue } = useForm<FormData>({
-    defaultValues: {
-      files: [],
-    },
-  });
   const [error, setError] = useState(false);
   const [isDragOver, setIsDragOver] = useState(false);
 
   const handleFilesChange = (selectedFiles: File[]) => {
-    setValue("files", selectedFiles, { shouldValidate: true });
-
     // Generate URLs for image preview
     // const fileUrls = selectedFiles.map((file) => URL.createObjectURL(file));
     const filesWithUrls = selectedFiles.map((file) => ({
       file: file,
+      size: formatFileSize(file.size),
       url: URL.createObjectURL(file),
     }));
 
     if (onFileData) {
       onFileData(filesWithUrls);
+      setValue("files", filesWithUrls, { shouldValidate: true });
     }
   };
 
@@ -95,7 +102,7 @@ const DragAndDropComp: React.FC<DragAndDropCompProps> = ({
         </div>
         <Controller
           control={control}
-          name="files"
+          name={inputRef}
           render={({ field: { onBlur, ref } }) => (
             <input
               type="file"

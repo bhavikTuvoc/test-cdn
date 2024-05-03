@@ -7,10 +7,22 @@ import ButtonGroup from "./ButtonGroup";
 import ArrowIcon from "../assets/RightArrow.svg";
 import XImg from "../assets/x-close.svg";
 import { handleClose } from "../App";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 type Props = {};
 
 const PopUp = ({}: Props) => {
+  const { control, setValue, watch, register } = useForm<any>({
+    defaultValues: {
+      files: [],
+      Details: [],
+      Issues: [],
+      desc: "",
+      currenCustomerStatus: "Yes",
+    },
+  });
+
+  const formValue = watch();
+  console.log(formValue);
   const indicatorList: StepDetail[] = [
     {
       id: "Service",
@@ -49,7 +61,7 @@ const PopUp = ({}: Props) => {
       flag: "Default",
     },
   ];
-  const IndividualDetail: IndividualDetailType[] = [
+  const IndividualDetail: IndividualDetailType[] | any = [
     {
       label: "Service",
       id: "Service",
@@ -76,21 +88,21 @@ const PopUp = ({}: Props) => {
           ],
         },
         {
-          item: "Heating & Cooling1",
+          item: "Plumbing",
           subCategories: [
-            { id: "No Heat", subItem: "No Heat", checked: false },
-            { id: "No Cooling", subItem: "No Cooling", checked: false },
+            { id: "Water Leak", subItem: "Water Leak", checked: false },
+            { id: "Water Heater", subItem: "Water Heater", checked: false },
             {
-              id: "Unit Leaking Water",
-              subItem: "Unit Leaking Water",
+              id: "Toilet",
+              subItem: "Toilet",
               checked: false,
             },
             {
-              id: "Unit Making Noise",
-              subItem: "Unit Making Noise",
+              id: "Sink or Faucet",
+              subItem: "Sink or Faucet",
               checked: false,
             },
-            { id: "Thermostat", subItem: "Thermostat", checked: false },
+            { id: "Tub or Shower", subItem: "Tub or Shower", checked: false },
           ],
         },
       ],
@@ -159,6 +171,20 @@ const PopUp = ({}: Props) => {
         },
       ],
     },
+    {
+      label: "Customer",
+      id: "Customer",
+      checked: false,
+      categoryType: "Customer",
+      header: "Are you current customer",
+    },
+    {
+      label: "Schedule",
+      id: "Schedule",
+      checked: false,
+      categoryType: "Schedule",
+      header: "Schedule",
+    },
   ];
 
   const { steps, goToNext, goToPrevious, currentId } =
@@ -166,15 +192,6 @@ const PopUp = ({}: Props) => {
 
   // const detail = IndividualDetail.find((detail) => detail.id === currentId);
   // console.log(detail);
-  const [active, setActive] = useState<string[]>([]);
-
-  const toggleHandleAccordian = (targetedId: string) => {
-    if (active.includes(targetedId)) {
-      setActive(active.filter((item) => item !== targetedId));
-    } else {
-      setActive([...active, targetedId]);
-    }
-  };
 
   return (
     <form className="formContainer">
@@ -219,10 +236,14 @@ const PopUp = ({}: Props) => {
             </button>
           </div>
           <RightCategoryComp
-            active={active}
-            data={IndividualDetail.find((detail) => detail.id === currentId)}
+            data={IndividualDetail.find(
+              (detail: IndividualDetailType) => detail.id === currentId
+            )}
             // data={IndividualDetail[0]}
-            toggleHandleAccordian={toggleHandleAccordian}
+            control={control}
+            setValue={setValue}
+            register={register}
+            watch={watch}
           />
         </div>
       </div>

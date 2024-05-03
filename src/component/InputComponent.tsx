@@ -5,7 +5,15 @@ type TextInputProps<TFieldValues extends FieldValues> = {
   placeholder?: string;
   register: UseFormRegister<TFieldValues>;
   name: Path<TFieldValues>;
-  type?: "text" | "password" | "email" | "number" | "date" | "tel";
+  type?:
+    | "text"
+    | "password"
+    | "email"
+    | "number"
+    | "date"
+    | "tel"
+    | "checkbox"
+    | "radio";
   className?: string;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "type">;
 

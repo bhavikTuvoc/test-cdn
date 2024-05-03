@@ -1,42 +1,41 @@
+import { UseFormRegister, UseFormWatch } from "react-hook-form";
 import AccordianComp from "./AccordianComp";
 import PhotosComp from "./PhotosComp";
 import QuestionComp from "./QuestionComp";
 import { IndividualDetailType } from "./types";
+import CustomerCategoryComp from "./CustomerCategoryComp";
+import ScheduleComp from "./ScheduleComp";
 
 type Props = {
-  active: string[];
   data: IndividualDetailType | any;
-  toggleHandleAccordian: any;
+  control: any;
+  setValue: any;
+  register: UseFormRegister<any>;
+  watch: UseFormWatch<any>;
 };
 
-const RightCategoryComp = ({ active, data, toggleHandleAccordian }: Props) => {
+const RightCategoryComp = ({
+  data,
+  control,
+  setValue,
+  register,
+  watch,
+}: Props) => {
   const header = data.header;
+
+  // console.log(data);
+
   return (
     <div className="rightDetailWrapper">
       <h3 className="rightDetailHeader">{header}</h3>
       {data && data?.categoryType === "Accordian" && (
         <div className="accWrpper">
-          {data?.category.map((item: any) => (
-            <AccordianComp
-              key={item.item}
-              toggleHandleAccordian={toggleHandleAccordian}
-              active={active}
-              accTitle={item.item}
-              id={item.item}
-              accChild={item.subCategories}
-            />
-          ))}
+          <AccordianComp setValue={setValue} accChild={data.category} />
         </div>
       )}
       {data && data?.categoryType === "Question" && (
         <div className="queMainWrapper">
-          {data?.category.map((item: any) => (
-            <QuestionComp
-              key={item.item}
-              accChild={item.subCategories}
-              accTitle={item.item}
-            />
-          ))}
+          <QuestionComp setValue={setValue} questiondata={data.category} />
         </div>
       )}
 
@@ -47,8 +46,28 @@ const RightCategoryComp = ({ active, data, toggleHandleAccordian }: Props) => {
               key={item.item}
               accChild={item.subCategories}
               accTitle={item.item}
+              control={control}
+              setValue={setValue}
+              register={register}
+              watch={watch}
             />
           ))}
+        </div>
+      )}
+
+      {data && data?.categoryType === "Customer" && (
+        <div className="queMainWrapper">
+          <CustomerCategoryComp
+            register={register}
+            watch={watch}
+            setValue={setValue}
+          />
+        </div>
+      )}
+
+      {data && data?.categoryType === "Schedule" && (
+        <div className="queMainWrapper">
+          <ScheduleComp register={register} watch={watch} setValue={setValue} />
         </div>
       )}
     </div>

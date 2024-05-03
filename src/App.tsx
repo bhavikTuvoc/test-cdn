@@ -1,13 +1,16 @@
 import ReactDOM from "react-dom";
 import "./App.css";
 import PopUp from "./component/PopUp";
+import { FormDataProvider } from "./Provider/FormDataConext";
 
 function App() {
   return (
     // <div className="App app-container" style={{ display: "none" }}>
     <div className="App app-container" style={{ display: "block" }}>
       <div className="bgBlur popUpWrapper">
-        <PopUp />
+        <FormDataProvider>
+          <PopUp />
+        </FormDataProvider>
       </div>
     </div>
   );
