@@ -181,12 +181,12 @@ const MobileProgressBarItem = ({
           {flag === "Completed" ? (
             <div
               className={`lineBar bgPrimary`}
-              style={{ display: lastItem ? "none" : "" }}
+              style={{ display: lastItem ? "none" : "", minHeight: "26px" }}
             />
           ) : (
             <div
               className={`lineBar bgIndicatorColor`}
-              style={{ display: lastItem ? "none" : "" }}
+              style={{ display: lastItem ? "none" : "", minHeight: "26px" }}
             />
           )}
         </div>

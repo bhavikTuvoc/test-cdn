@@ -129,6 +129,17 @@ button {
   height: 100%;
 }
 
+.formContainerSuccesss {
+  max-width: 960px;
+  width: 100%;
+  background-color: rgb(255 255 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 @media (min-width: 768px) {
   .popUpWrapper {
     align-items: center;
@@ -137,6 +148,12 @@ button {
     border-radius: 24px;
     padding: 24px;
     min-height: 738px;
+    height: auto;
+  }
+  .formContainerSuccesss {
+    border-radius: 24px;
+    padding: 24px;
+    min-height: auto;
     height: auto;
   }
 }
@@ -226,6 +243,7 @@ button {
   display: flex;
   width: auto;
   gap: 10px;
+  margin-bottom: 3px;
 }
 
 .indicatorLeft {
@@ -398,7 +416,8 @@ button {
     flex: 0.64;
     display: flex;
     padding: 0;
-    max-height: 600px;
+    max-height: 645px;
+    height: auto;
   }
 
   .indiDiv {
@@ -598,7 +617,7 @@ button {
     /* padding: 18px 22px; */
   }
   .rightDetailWrapper {
-    max-height: 600px;
+    height: 100%;
   }
   .accTitleDiv {
     padding: 18px 0px;

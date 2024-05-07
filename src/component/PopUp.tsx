@@ -24,6 +24,7 @@ const PopUp = ({}: Props) => {
       currenCustomerStatus: "Yes",
       messageType: "email",
       accordianState: [],
+      successMessage: true,
     },
   });
 
@@ -203,13 +204,15 @@ const PopUp = ({}: Props) => {
   const { steps, goToNext, goToPrevious, currentId } =
     useNavigation(indicatorList);
 
-  // const detail = IndividualDetail.find((detail) => detail.id === currentId);
+  let success = formValue?.successMessage;
+  const handleSuccessPage = () => {
+    setValue("successMessage", !success);
+  };
 
-  let success = true;
   return (
-    <form className="formContainer">
+    <>
       {success && (
-        <>
+        <form className="formContainer">
           <div className="formBodyContainer">
             {/* left */}
             <div className="formBodyLeft">
@@ -236,7 +239,15 @@ const PopUp = ({}: Props) => {
                     watch={watch}
                   />
                 ))}
-                <button className="mobileNext" type="button" onClick={goToNext}>
+                <button
+                  className="mobileNext"
+                  type="button"
+                  onClick={
+                    currentId === indicatorList[indicatorList.length - 1].id
+                      ? handleSuccessPage
+                      : goToNext
+                  }
+                >
                   {currentId === indicatorList[indicatorList.length - 1].id
                     ? "Confirm"
                     : "Next"}
@@ -286,38 +297,45 @@ const PopUp = ({}: Props) => {
               currentId={currentId}
               indicatorList={indicatorList}
               goToPrevious={goToPrevious}
-              goToNext={goToNext}
+              goToNext={
+                currentId === indicatorList[indicatorList.length - 1].id
+                  ? handleSuccessPage
+                  : goToNext
+              }
               handleCancel={handleClose}
             />
           </div>
-        </>
+        </form>
       )}
       {!success && (
-        <div className="successPageDiv">
-          <div className="logoOfSuccessDiv">
-            <img src={`${Logo}`} alt="Purple" />
+        <div className="formContainerSuccesss">
+          <div className="successPageDiv">
+            <div className="logoOfSuccessDiv">
+              <img src={`${Logo}`} alt="Purple" />
+            </div>
+            <div className="heroImageWrapper">
+              <img src={`${heroImg}`} alt="Purple" />
+            </div>
+            <div className="successTextDiv">
+              <h2>Succesfull</h2>
+              <p>
+                Our managers already received your request and will contact you
+                soon.
+              </p>
+            </div>
+            <button
+              className="goToHomePageBtn"
+              type="button"
+              style={{ cursor: "pointer" }}
+              onClick={handleClose}
+            >
+              <span> Go to the home page</span>
+              <img src={arrow} alt="arrow" />
+            </button>
           </div>
-          <div className="heroImageWrapper">
-            <img src={`${heroImg}`} alt="Purple" />
-          </div>
-          <div className="successTextDiv">
-            <h2>Succesfull</h2>
-            <p>
-              Our managers already received your request and will contact you
-              soon.
-            </p>
-          </div>
-          <button
-            className="goToHomePageBtn"
-            type="button"
-            onClick={handleClose}
-          >
-            <span> Go to the home page</span>
-            <img src={arrow} alt="arrow" />
-          </button>
         </div>
       )}
-    </form>
+    </>
   );
 };
 
