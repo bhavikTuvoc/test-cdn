@@ -5,6 +5,7 @@ import QuestionComp from "./QuestionComp";
 import { IndividualDetailType } from "./types";
 import CustomerCategoryComp from "./CustomerCategoryComp";
 import ScheduleComp from "./ScheduleComp";
+import ConfirmationComp from "./ConfirmationComp";
 
 type Props = {
   data: IndividualDetailType | any;
@@ -12,6 +13,7 @@ type Props = {
   setValue: any;
   register: UseFormRegister<any>;
   watch: UseFormWatch<any>;
+  child: any;
 };
 
 const RightCategoryComp = ({
@@ -20,17 +22,27 @@ const RightCategoryComp = ({
   setValue,
   register,
   watch,
+  child,
 }: Props) => {
   const header = data.header;
 
-  // console.log(data);
-
   return (
-    <div className="rightDetailWrapper">
+    <div className="rightDetailWrapper ">
+      <div
+        className={`${
+          data && data?.categoryType === "Confirm" && "border-b"
+        } showMobile`}
+      >
+        {data && data?.categoryType === "Confirm" && <>{child}</>}
+      </div>
       <h3 className="rightDetailHeader">{header}</h3>
       {data && data?.categoryType === "Accordian" && (
         <div className="accWrpper">
-          <AccordianComp setValue={setValue} accChild={data.category} />
+          <AccordianComp
+            watch={watch}
+            setValue={setValue}
+            accChild={data.category}
+          />
         </div>
       )}
       {data && data?.categoryType === "Question" && (
@@ -68,6 +80,15 @@ const RightCategoryComp = ({
       {data && data?.categoryType === "Schedule" && (
         <div className="queMainWrapper">
           <ScheduleComp register={register} watch={watch} setValue={setValue} />
+        </div>
+      )}
+      {data && data?.categoryType === "Confirm" && (
+        <div className="queMainWrapper">
+          <ConfirmationComp
+            register={register}
+            watch={watch}
+            setValue={setValue}
+          />
         </div>
       )}
     </div>

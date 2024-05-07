@@ -8,6 +8,10 @@ import ArrowIcon from "../assets/RightArrow.svg";
 import XImg from "../assets/x-close.svg";
 import { handleClose } from "../App";
 import { useForm } from "react-hook-form";
+import heroImg from "../assets/successImage.svg";
+import arrow from "../assets/arrow-right.svg";
+import MobileProgressBarItem from "./MobileProgressBarItem";
+
 type Props = {};
 
 const PopUp = ({}: Props) => {
@@ -15,9 +19,11 @@ const PopUp = ({}: Props) => {
     defaultValues: {
       files: [],
       Details: [],
-      Issues: [],
+      Issue: [],
       desc: "",
       currenCustomerStatus: "Yes",
+      messageType: "email",
+      accordianState: [],
     },
   });
 
@@ -25,8 +31,8 @@ const PopUp = ({}: Props) => {
   console.log(formValue);
   const indicatorList: StepDetail[] = [
     {
-      id: "Service",
-      label: "Service",
+      id: "Issue",
+      label: "Issue",
       detail: "Select issue",
       flag: "Active",
     },
@@ -63,8 +69,8 @@ const PopUp = ({}: Props) => {
   ];
   const IndividualDetail: IndividualDetailType[] | any = [
     {
-      label: "Service",
-      id: "Service",
+      label: "Issue",
+      id: "Issue",
       checked: false,
       categoryType: "Accordian",
       header: "Please select your issue",
@@ -185,77 +191,132 @@ const PopUp = ({}: Props) => {
       categoryType: "Schedule",
       header: "Schedule",
     },
+    {
+      label: "Confirm",
+      id: "Confirm",
+      checked: false,
+      categoryType: "Confirm",
+      header: "Confirmation",
+    },
   ];
 
   const { steps, goToNext, goToPrevious, currentId } =
     useNavigation(indicatorList);
 
   // const detail = IndividualDetail.find((detail) => detail.id === currentId);
-  // console.log(detail);
 
+  let success = true;
   return (
     <form className="formContainer">
-      <div className="formBodyContainer">
-        {/* left */}
-        <div className="formBodyLeft">
-          {/* logo */}
-          <div className="logoDiv genralLogo">
+      {success && (
+        <>
+          <div className="formBodyContainer">
+            {/* left */}
+            <div className="formBodyLeft">
+              {/* logo */}
+              <div className="logoDiv genralLogo">
+                <img src={`${Logo}`} alt="Purple" />
+              </div>
+              {/* progress bar */}
+              <div className="indicatorWrapper">
+                <button
+                  className="mobileBack"
+                  type="button"
+                  onClick={goToPrevious}
+                >
+                  Back
+                </button>
+                {steps.map((item: StepDetail, index: number) => (
+                  <ProgressBarItem
+                    key={item.label}
+                    detail={item.detail}
+                    flag={item.flag}
+                    label={item.label}
+                    lastItem={steps.length === index + 1}
+                    watch={watch}
+                  />
+                ))}
+                <button className="mobileNext" type="button" onClick={goToNext}>
+                  {currentId === indicatorList[indicatorList.length - 1].id
+                    ? "Confirm"
+                    : "Next"}
+                  <img
+                    src={ArrowIcon}
+                    alt="arrow"
+                    className="nextArrowImgMobile"
+                  />
+                </button>
+              </div>
+            </div>
+            {/* right */}
+            <div className="formBodyRight">
+              {/* mobile logo */}
+              <div className="mobileLogoDiv">
+                <div className="logoDiv">
+                  <img src={`${Logo}`} alt="Purple" />
+                </div>
+                <button type="button" className="Xbtn" onClick={handleClose}>
+                  <img src={XImg} alt="X" />
+                </button>
+              </div>
+              <RightCategoryComp
+                child={steps.map((item: StepDetail, index: number) => (
+                  <MobileProgressBarItem
+                    key={item.label}
+                    detail={item.detail}
+                    flag={item.flag}
+                    label={item.label}
+                    lastItem={steps.length === index + 1}
+                    watch={watch}
+                  />
+                ))}
+                data={IndividualDetail.find(
+                  (detail: IndividualDetailType) => detail.id === currentId
+                )}
+                // data={IndividualDetail[0]}
+                control={control}
+                setValue={setValue}
+                register={register}
+                watch={watch}
+              />
+            </div>
+          </div>
+          <div className="formBodyBottom">
+            <ButtonGroup
+              currentId={currentId}
+              indicatorList={indicatorList}
+              goToPrevious={goToPrevious}
+              goToNext={goToNext}
+              handleCancel={handleClose}
+            />
+          </div>
+        </>
+      )}
+      {!success && (
+        <div className="successPageDiv">
+          <div className="logoOfSuccessDiv">
             <img src={`${Logo}`} alt="Purple" />
           </div>
-          {/* progress bar */}
-          <div className="indicatorWrapper">
-            <button className="mobileBack" type="button" onClick={goToPrevious}>
-              Back
-            </button>
-            {steps.map((item: StepDetail, index: number) => (
-              <ProgressBarItem
-                key={item.label}
-                detail={item.detail}
-                flag={item.flag}
-                label={item.label}
-                lastItem={steps.length === index + 1}
-              />
-            ))}
-            <button className="mobileNext" type="button" onClick={goToNext}>
-              {currentId === indicatorList[indicatorList.length - 1].id
-                ? "Confirm"
-                : "Next"}
-              <img src={ArrowIcon} alt="arrow" className="nextArrowImgMobile" />
-            </button>
+          <div className="heroImageWrapper">
+            <img src={`${heroImg}`} alt="Purple" />
           </div>
-        </div>
-        {/* right */}
-        <div className="formBodyRight">
-          {/* mobile logo */}
-          <div className="mobileLogoDiv">
-            <div className="logoDiv">
-              <img src={`${Logo}`} alt="Purple" />
-            </div>
-            <button type="button" className="Xbtn" onClick={handleClose}>
-              <img src={XImg} alt="X" />
-            </button>
+          <div className="successTextDiv">
+            <h2>Succesfull</h2>
+            <p>
+              Our managers already received your request and will contact you
+              soon.
+            </p>
           </div>
-          <RightCategoryComp
-            data={IndividualDetail.find(
-              (detail: IndividualDetailType) => detail.id === currentId
-            )}
-            // data={IndividualDetail[0]}
-            control={control}
-            setValue={setValue}
-            register={register}
-            watch={watch}
-          />
+          <button
+            className="goToHomePageBtn"
+            type="button"
+            onClick={handleClose}
+          >
+            <span> Go to the home page</span>
+            <img src={arrow} alt="arrow" />
+          </button>
         </div>
-      </div>
-      <div className="formBodyBottom">
-        <ButtonGroup
-          currentId={currentId}
-          indicatorList={indicatorList}
-          goToPrevious={goToPrevious}
-          goToNext={goToNext}
-          handleCancel={handleClose}
-        />
-      </div>
+      )}
     </form>
   );
 };

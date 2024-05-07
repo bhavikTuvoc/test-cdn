@@ -22,7 +22,8 @@ function setupApp() {
   document.body.appendChild(rootElement);
   ReactDOM.render(<App />, rootElement);
 
-  window.toggleApp = () => {
+  window.toggleApp = (string) => {
+    console.log(string);
     const appContainer = document.querySelector(
       ".app-container"
     ) as HTMLElement;
@@ -33,7 +34,7 @@ function setupApp() {
   };
 
   // Optionally, you can toggle the app to show or hide it initially here
-  window.toggleApp();
+  window.toggleApp("hello");
 }
 
 export const handleClose = () => {

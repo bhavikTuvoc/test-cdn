@@ -3,7 +3,7 @@ import downArrow from "../assets/chevron-down.svg";
 import HeatingImg from "../assets/Heating.svg";
 import uncheckCircle from "../assets/un-check.svg";
 import checkCircle from "../assets/check-circle.svg";
-import { UseFormSetValue } from "react-hook-form";
+import { UseFormSetValue, UseFormWatch } from "react-hook-form";
 import { useCallback, useEffect, useState } from "react";
 import { question } from "./QuestionComp";
 import { useFormData } from "../Provider/FormDataConext";
@@ -12,9 +12,10 @@ import { SubCategory } from "./types";
 type Props = {
   accChild: question[];
   setValue: UseFormSetValue<any>;
+  watch: UseFormWatch<any>;
 };
 
-const AccordianComp = ({ accChild = [], setValue }: Props) => {
+const AccordianComp = ({ accChild = [], setValue, watch }: Props) => {
   const { updateFormData, setIssueDataOld, issueDataOld } = useFormData();
 
   const getInitialState = () => {
@@ -29,7 +30,7 @@ const AccordianComp = ({ accChild = [], setValue }: Props) => {
   useEffect(() => {
     updateFormData({ Details: issueData });
     setIssueDataOld(issueData);
-    setValue("Issues", issueData);
+    setValue("Issue", issueData);
   }, [issueData]);
 
   //options are multiselected
@@ -51,13 +52,16 @@ const AccordianComp = ({ accChild = [], setValue }: Props) => {
     []
   );
 
-  const [active, setActive] = useState<string[]>([]);
+  const active: string[] = watch("accordianState");
 
   const toggleHandleAccordian = (targetedId: string) => {
     if (active.includes(targetedId)) {
-      setActive(active.filter((item) => item !== targetedId));
+      setValue(
+        "accordianState",
+        active.filter((item) => item !== targetedId)
+      );
     } else {
-      setActive([...active, targetedId]);
+      setValue("accordianState", [...active, targetedId]);
     }
   };
   return (

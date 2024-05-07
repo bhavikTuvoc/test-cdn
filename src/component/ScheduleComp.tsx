@@ -18,7 +18,7 @@ export type slotButtonArrayType = {
   slot: string;
 };
 
-const ScheduleComp = ({ register }: Props) => {
+const ScheduleComp = ({ register, setValue }: Props) => {
   const slotButtonsArray: slotButtonArrayType[] = [
     { id: "button1", slot: "7:00am - 9:00am" },
     { id: "button2", slot: "1:00am - 3:00am" },
@@ -31,6 +31,11 @@ const ScheduleComp = ({ register }: Props) => {
 
   const handleSelectedButton = (id: string) => {
     setSlot(id);
+    const selectedSlot = slotButtonsArray.find((item) => item.id === id);
+    setValue("slotAndDate", {
+      date: slotDate.toISOString(),
+      slot: selectedSlot?.slot,
+    });
   };
 
   return (

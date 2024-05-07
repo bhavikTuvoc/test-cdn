@@ -10,7 +10,7 @@ type Props = {
   watch: UseFormWatch<any>;
 };
 
-const ProgressBarItem = ({
+const MobileProgressBarItem = ({
   label = "Services",
   detail = "Select Issues",
   flag = "Default",
@@ -143,7 +143,6 @@ const ProgressBarItem = ({
         );
     }
   };
-
   const renderContentBasedOnFlag = () => {
     switch (flag) {
       case "Default":
@@ -181,19 +180,19 @@ const ProgressBarItem = ({
           {/*line baar*/}
           {flag === "Completed" ? (
             <div
-              className={`lineBar bgPrimary mobileNone`}
+              className={`lineBar bgPrimary`}
               style={{ display: lastItem ? "none" : "" }}
             />
           ) : (
             <div
-              className={`lineBar bgIndicatorColor mobileNone`}
+              className={`lineBar bgIndicatorColor`}
               style={{ display: lastItem ? "none" : "" }}
             />
           )}
         </div>
       </div>
       {/* right */}
-      <div className="indicatorRight">
+      <div className="indicatorRightMobile">
         <div
           className={`indicatorHeader ${
             flag === "Active" || flag === "Completed"
@@ -203,7 +202,6 @@ const ProgressBarItem = ({
         >
           {label}
         </div>
-
         {label === "Issue" && renderDataofIssueIndicator()}
         {label === "Details" && renderDataofDetailsIndicator()}
         {label !== "Issue" && label !== "Details" && renderDataofIndicator()}
@@ -212,23 +210,4 @@ const ProgressBarItem = ({
   );
 };
 
-export default ProgressBarItem;
-
-// {
-//   //   <ul className="ulList">
-//   // {detailsOptions.map((detail: any) => (
-//   //   <li key={detail.item}>
-//   //     {detail.item}: <span>{detail.selected}</span>
-//   //   </li>
-//   // ))}
-//   // </ul>
-// }
-// {/* <div
-//           className={`indicatorDetail ${
-//             flag === "Active" || flag === "Completed"
-//               ? "textSecondry"
-//               : "textNormalSec"
-//           }`}
-//         >
-//           {detail}
-//         </div> */}
+export default MobileProgressBarItem;
