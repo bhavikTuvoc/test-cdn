@@ -3,7 +3,7 @@ import App from "./App.tsx";
 import "./index.css";
 import "./App.css";
 
-ReactDOM.createRoot(document.getElementById("purple")!).render(
+ReactDOM.createRoot(document.getElementById("purple-plugin-root-id")!).render(
   // <React.StrictMode>
   <App />
   // </React.StrictMode>,
