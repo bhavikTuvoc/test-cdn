@@ -10031,7 +10031,7 @@ const an = () => {
   r && (r.style.display = r.style.display === "none" ? "block" : "none");
 };
 document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", Za) : Za();
-sn.createRoot(document.getElementById("root")).render(
+sn.createRoot(document.getElementById("purple")).render(
   // <React.StrictMode>
   /* @__PURE__ */ p.jsx(ti, {})
   // </React.StrictMode>,
