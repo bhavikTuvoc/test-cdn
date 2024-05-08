@@ -1127,6 +1127,7 @@ input[type="checkbox"] {
   align-items: center;
   float: none !important;
   border-radius: 20px;
+  position: relative !important;
 }
 
 .react-datepicker__header {
@@ -1251,4 +1252,53 @@ input[type="checkbox"] {
 
   ) {
   color: var(--textNormal) !important;
+}
+
+.react-datepicker__day--highlighted:not(.react-datepicker__day--selected) {
+  background-color: transparent !important;
+  position: relative !important;
+  color: var(--textNormal) !important;
+}
+
+.react-datepicker__day--highlighted:has(.react-datepicker__day--selected) {
+  position: relative !important;
+}
+
+.react-datepicker__day
+  .react-datepicker__day--selected
+  .react-datepicker__day--weekend
+  .react-datepicker__day--highlighted {
+  position: relative !important;
+}
+
+.react-datepicker__day--highlighted:hover {
+  background-color: var(--btnActiveColorBg) !important;
+}
+
+.react-datepicker__day--highlighted:not(
+    .react-datepicker__day--selected
+  )::after {
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 3px;
+  background-color: var(--textSecondry);
+  display: block;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.react-datepicker__day--highlighted:has(
+    .react-datepicker__day--selected
+  )::after {
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 3px;
+  background-color: #fff !important;
+  display: block;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
 }

@@ -7,6 +7,7 @@ type Props = {
   setStartDate: React.Dispatch<any>;
   startDate: Date;
   excludeDates?: Date[];
+  highlightDates?: Date[];
 };
 
 const CalenderComp = ({
@@ -15,11 +16,13 @@ const CalenderComp = ({
   setStartDate,
   startDate,
   excludeDates,
+  highlightDates,
 }: // excludeDates = [
 //   new Date("2024-05-10T10:54:49.000Z"),
 //   new Date("2024-05-12T10:54:49.000Z"),
 // ],
 Props) => {
+  // const [startDate, setStartDate] = useState<any>(new Date());
   return (
     <DatePicker
       selected={startDate}
@@ -29,6 +32,7 @@ Props) => {
       minDate={minDate}
       calendarStartDay={1}
       inline
+      highlightDates={highlightDates}
       showDisabledMonthNavigation
     />
   );
