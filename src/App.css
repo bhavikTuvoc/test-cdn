@@ -84,19 +84,19 @@ button {
 }
 
 .btn {
-  padding: 16px 22px;
-  outline: none;
-  font-size: 18px;
-  font-weight: 600;
-  box-shadow: 0px 1px 2px 0px #1018280d;
-  border-radius: 0.375rem /* 6px */;
-  border: 0;
-  outline: none;
+  padding: 16px 22px !important;
+  outline: none !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  box-shadow: 0px 1px 2px 0px #1018280d !important;
+  border-radius: 0.375rem !important /* 6px */;
+  border: 0 !important;
+  outline: none !important;
 }
 
 .btnPrimary {
-  background-color: var(--primaryBtnBg);
-  color: white;
+  background-color: var(--primaryBtnBg) !important;
+  color: white !important;
 }
 
 .btn:focus {
