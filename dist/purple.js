@@ -9396,17 +9396,19 @@ const YA = ({
   minDate: n = /* @__PURE__ */ new Date(),
   setStartDate: e,
   startDate: t,
-  excludeDates: a
+  excludeDates: a,
+  highlightDates: i
 }) => /* @__PURE__ */ p.jsx(
   SA,
   {
     selected: t,
     className: r,
-    onChange: (i) => e(i),
+    onChange: (s) => e(s),
     excludeDates: a,
     minDate: n,
     calendarStartDay: 1,
     inline: !0,
+    highlightDates: i,
     showDisabledMonthNavigation: !0
   }
 ), PA = ({ register: r, setValue: n }) => {
