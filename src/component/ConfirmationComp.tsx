@@ -19,11 +19,13 @@ const ConfirmationComp = ({ setValue, watch }: Props) => {
   };
   return (
     <div>
-      <div className="customerSwitch">
+      <div className="CdnPurpleCustomerSwitch">
         <button
           type="button"
-          className={`accBtns confirmationButtons ${
-            messageType === "email" ? "accBtnActive" : "accBtnDefault"
+          className={`CdnPurpleAccBtns CdnPurpleConfirmationButtons ${
+            messageType === "email"
+              ? "CdnPurpleAccBtnActive"
+              : "CdnPurpleAccBtnDefault"
           }`}
           onClick={() => handleSelectedButton("email")}
         >
@@ -36,8 +38,10 @@ const ConfirmationComp = ({ setValue, watch }: Props) => {
         </button>
         <button
           type="button"
-          className={`accBtns confirmationButtons ${
-            messageType === "text" ? "accBtnActive" : "accBtnDefault"
+          className={`CdnPurpleAccBtns CdnPurpleConfirmationButtons ${
+            messageType === "text"
+              ? "CdnPurpleAccBtnActive"
+              : "CdnPurpleAccBtnDefault"
           }`}
           onClick={() => handleSelectedButton("text")}
         >

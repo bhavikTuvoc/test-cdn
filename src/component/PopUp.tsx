@@ -212,18 +212,18 @@ const PopUp = ({}: Props) => {
   return (
     <>
       {success && (
-        <form className="formContainer">
-          <div className="formBodyContainer">
+        <form className="CdnPurpleFormContainer">
+          <div className="CdnPurpleFormBodyContainer">
             {/* left */}
-            <div className="formBodyLeft">
+            <div className="CdnPurpleFormBodyLeft">
               {/* logo */}
-              <div className="logoDiv genralLogo">
+              <div className="CdnPurpleLogoDiv CdnPurpleGenralLogo">
                 <img src={`${Logo}`} alt="Purple" />
               </div>
               {/* progress bar */}
-              <div className="indicatorWrapper">
+              <div className="CdnPurpleIndicatorWrapper">
                 <button
-                  className="mobileBack"
+                  className="CdnPurpleMobileBack"
                   type="button"
                   onClick={goToPrevious}
                 >
@@ -240,7 +240,7 @@ const PopUp = ({}: Props) => {
                   />
                 ))}
                 <button
-                  className="mobileNext"
+                  className="CdnPurpleMobileNext"
                   type="button"
                   onClick={
                     currentId === indicatorList[indicatorList.length - 1].id
@@ -254,19 +254,23 @@ const PopUp = ({}: Props) => {
                   <img
                     src={ArrowIcon}
                     alt="arrow"
-                    className="nextArrowImgMobile"
+                    className="CdnPurpleNextArrowImgMobile"
                   />
                 </button>
               </div>
             </div>
             {/* right */}
-            <div className="formBodyRight">
+            <div className="CdnPurpleFormBodyRight">
               {/* mobile logo */}
-              <div className="mobileLogoDiv">
-                <div className="logoDiv">
+              <div className="CdnPurpleMobileLogoDiv">
+                <div className="CdnPurpleLogoDiv">
                   <img src={`${Logo}`} alt="Purple" />
                 </div>
-                <button type="button" className="Xbtn" onClick={handleClose}>
+                <button
+                  type="button"
+                  className="CdnPurpleXbtn"
+                  onClick={handleClose}
+                >
                   <img src={XImg} alt="X" />
                 </button>
               </div>
@@ -292,7 +296,7 @@ const PopUp = ({}: Props) => {
               />
             </div>
           </div>
-          <div className="formBodyBottom">
+          <div className="CdnPurpleFormBodyBottom">
             <ButtonGroup
               currentId={currentId}
               indicatorList={indicatorList}
@@ -308,15 +312,15 @@ const PopUp = ({}: Props) => {
         </form>
       )}
       {!success && (
-        <div className="formContainerSuccesss">
-          <div className="successPageDiv">
-            <div className="logoOfSuccessDiv">
+        <div className="CdnPurpleFormContainerSuccesss">
+          <div className="CdnPurpleSuccessPageDiv">
+            <div className="CdnPurplelogoOfSuccessDiv">
               <img src={`${Logo}`} alt="Purple" />
             </div>
-            <div className="heroImageWrapper">
+            <div className="CdnPurpleHeroImageWrapper">
               <img src={`${heroImg}`} alt="Purple" />
             </div>
-            <div className="successTextDiv">
+            <div className="CdnPurpleSuccessTextDiv">
               <h2>Succesfull</h2>
               <p>
                 Our managers already received your request and will contact you
@@ -324,7 +328,7 @@ const PopUp = ({}: Props) => {
               </p>
             </div>
             <button
-              className="goToHomePageBtn"
+              className="CdnPurpleGoToHomePageBtn"
               type="button"
               style={{ cursor: "pointer" }}
               onClick={handleClose}

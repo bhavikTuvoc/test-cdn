@@ -26,56 +26,49 @@ body {
   --btnActiveColorBg: #f9f5ff;
 }
 
-.textPrimary {
+.CdnPurpleTextPrimary {
   color: var(--textPrimary);
 }
-.textSecondry {
+
+.CdnPurpleTextSecondry {
   color: var(--textSecondry);
 }
 
-.textNormal {
+.CdnPurpleTextNormal {
   color: var(--textNormal);
 }
 
-.textNormalSec {
+.CdnPurpleTextNormalSec {
   color: var(--textNormalSec);
 }
 
-.bgPrimary {
+.CdnPurpleBgPrimary {
   background-color: var(--primarColor);
 }
 
-.bgIndicatorColor {
+.CdnPurpleBgIndicatorColor {
   background-color: var(--indicatorColor);
 }
-/* #root {
-  background-image: url("https://images-platform.99static.com//bDfjACPHvzyWVlrc0bNhC9xLS2k=/0x0:1920x1920/fit-in/500x500/99designs-contests-attachments/95/95980/attachment_95980253");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100dvh !important;
-} */
 
-.App {
+.CdnPurpleApp {
   width: 100dvw !important;
   height: 100dvh !important;
   overflow-y: auto;
   position: absolute;
   top: 0;
-  /* left: 0; */
-  /* right: 0; */
 }
 
 button {
-  outline: none;
+  outline: none !important;
 }
-.pointer {
+.CdnPurplePointer {
   cursor: pointer;
 }
-.cursorNone {
+.CdnPurpleCursorNone {
   cursor: not-allowed;
 }
 
-.bgBlur {
+.CdnPurpleBgBlur {
   background: rgba(16, 15, 15, 0.3);
   /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
   backdrop-filter: blur(4.5px);
@@ -83,7 +76,7 @@ button {
   /* border: 1px solid rgba(255, 255, 255, 0.18); */
 }
 
-.btn {
+.CdnPurpleBtn {
   padding: 16px 22px !important;
   outline: none !important;
   font-size: 18px !important;
@@ -94,25 +87,25 @@ button {
   outline: none !important;
 }
 
-.btnPrimary {
+.CdnPurpleBtnPrimary {
   background-color: var(--primaryBtnBg) !important;
   color: white !important;
 }
 
-.btn:focus {
+.CdnPurpleBtn:focus {
   box-shadow: none !important;
 }
 
-.indicatorShadow {
+.CdnPurpleIndicatorShadow {
   box-shadow: 0px 0px 0px 4px #9e77ed3d;
 }
 
-.popUpWrapper {
+.CdnPurplePopUpWrapper {
   width: 100%;
-  height: 100dvh;
+  /* height: 100dvh; */
   margin-left: auto;
   margin-right: auto;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -120,7 +113,7 @@ button {
   z-index: 2147483647 !important;
 }
 
-.formContainer {
+.CdnPurpleFormContainer {
   max-width: 960px;
   width: 100%;
   background-color: rgb(255 255 255);
@@ -128,10 +121,10 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100dvh;
 }
 
-.formContainerSuccesss {
+.CdnPurpleFormContainerSuccesss {
   max-width: 960px;
   width: 100%;
   background-color: rgb(255 255 255);
@@ -143,16 +136,17 @@ button {
 }
 
 @media (min-width: 768px) {
-  .popUpWrapper {
+  .CdnPurplePopUpWrapper {
     align-items: center;
   }
-  .formContainer {
+  .CdnPurpleFormContainer {
     border-radius: 24px;
     padding: 24px;
     min-height: 738px;
     height: auto;
+    max-height: 100dvh;
   }
-  .formContainerSuccesss {
+  .CdnPurpleFormContainerSuccesss {
     border-radius: 24px;
     padding: 24px;
     min-height: auto;
@@ -160,41 +154,41 @@ button {
   }
 }
 
-.borderOfBtn {
-  border: 1px solid var(--grayAmoutColor);
+.CdnPurpleBorderOfBtn {
+  border: 1px solid var(--grayAmoutColor) !important;
   background-color: white;
 }
 
-.prevNext {
+.CdnPurplePrevNext {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 15px;
 }
 
-.btnWrapper {
+.CdnPurpleBtnWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 15px;
 }
 
-.prevArrowimg {
+.CdnPurplePrevArrowimg {
   width: 14px;
   height: 14px;
   transform: rotate(180deg);
 }
-.nextArrowimg {
+.CdnPurpleNextArrowimg {
   width: 14px;
   height: 14px;
 }
 
-.indicatorWH {
+.CdnPurpleIndicatorWH {
   width: 32px;
   height: 32px;
 }
 
-.formBodyContainer {
+.CdnPurpleFormBodyContainer {
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
@@ -204,7 +198,7 @@ button {
   gap: 10px;
 }
 
-.formBodyLeft {
+.CdnPurpleFormBodyLeft {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -217,7 +211,7 @@ button {
   background-color: #fff;
 }
 
-.formBodyRight {
+.CdnPurpleFormBodyRight {
   flex: 1;
   width: 100%;
   height: calc(100dvh - 53px);
@@ -226,34 +220,34 @@ button {
   overflow-y: auto;
   padding-bottom: 55px;
 }
-.formBodyBottom {
+.CdnPurpleFormBodyBottom {
   display: none;
 }
 
-.indicatorWrapper {
+.CdnPurpleIndicatorWrapper {
   display: flex;
   flex-direction: row;
   gap: 3px;
   justify-content: space-between;
   align-items: center;
 }
-.rounded-full {
+.CdnPurpleRoundedFull {
   border-radius: 9999px;
 }
 
-.indiDiv {
+.CdnPurpleIndiDiv {
   display: flex;
   width: auto;
   gap: 10px;
   margin-bottom: 3px;
 }
 
-.indicatorLeft {
+.CdnPurpleIndicatorLeft {
   width: 32px;
   flex-shrink: 0;
 }
 
-.indicatorLeft .innerDiv {
+.CdnPurpleIndicatorLeft .CdnPurpleInnerDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -261,21 +255,21 @@ button {
   height: 100%;
 }
 
-.lineBar {
+.CdnPurplelineBar {
   width: 2px;
   height: 100%;
   margin-top: 4px;
 }
 
-.indicatorRight {
+.CdnPurpleIndicatorRight {
   display: none;
 }
 
-.showMobile {
+.CdnPurpleShowMobile {
   display: block;
 }
 
-.indicatorRightMobile {
+.CdnPurpleIndicatorRightMobile {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -283,25 +277,25 @@ button {
   padding: 4px 0;
 }
 
-.border-b {
+.CdnPurpleBorderB {
   border-bottom: 1px solid var(--grayAmoutColor);
   padding-bottom: 20px;
 }
 
-.indicatorHeader {
+.CdnPurpleIndicatorHeader {
   font-size: 16px;
   font-weight: 600;
 }
-.indicatorDetail {
+.CdnPurpleIndicatorDetail {
   font-size: 16px;
   font-weight: 400;
 }
 
-.genralLogo {
+.CdnPurpleGenralLogo {
   display: none !important;
 }
 
-.mobileLogoDiv {
+.CdnPurpleMobileLogoDiv {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -310,19 +304,19 @@ button {
   padding-bottom: 16px;
 }
 
-.logoDiv {
+.CdnPurpleLogoDiv {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.logoDiv img {
+.CdnPurpleLogoDiv img {
   width: 134px;
   height: 50px;
 }
 
-.mobileBack {
+.CdnPurpleMobileBack {
   font-weight: 600;
   font-size: 14px;
   height: 36px;
@@ -333,7 +327,7 @@ button {
   border: 1px solid var(--grayAmoutColor);
 }
 
-.mobileNext {
+.CdnPurpleMobileNext {
   line-height: 20px;
   font-weight: 600;
   font-size: 14px;
@@ -349,10 +343,10 @@ button {
   outline: none;
   border-radius: 8px;
 }
-.mobileNone {
+.CdnPurpleMobileNone {
   display: none;
 }
-.Xbtn {
+.CdnPurpleXbtn {
   position: absolute;
   cursor: pointer;
   right: 24px;
@@ -368,10 +362,10 @@ button {
 }
 
 @media (min-width: 768px) {
-  .showMobile {
+  .CdnPurpleShowMobile {
     display: none;
   }
-  .formBodyLeft {
+  .CdnPurpleFormBodyLeft {
     position: relative;
     flex: 0.36;
     border-right: 1px solid var(--grayAmoutColor);
@@ -379,24 +373,24 @@ button {
     padding: 0;
     border-top: none;
   }
-  .mobileNone {
+  .CdnPurpleMobileNone {
     display: block;
   }
-  .formBodyContainer {
+  .CdnPurpleFormBodyContainer {
     flex-direction: row;
     gap: 24px;
     padding-bottom: 24px;
     border-bottom: 1px solid rgb(208 213 221);
     align-items: flex-start;
   }
-  .indicatorWrapper {
+  .CdnPurpleIndicatorWrapper {
     flex-direction: column;
     padding-top: 16px;
     padding-bottom: 16px;
     gap: 0;
   }
 
-  .formBodyBottom {
+  .CdnPurpleFormBodyBottom {
     display: flex;
     flex: 1 1 0%;
     justify-content: space-between;
@@ -406,7 +400,7 @@ button {
     margin-top: 16px;
   }
 
-  .indicatorRight {
+  .CdnPurpleIndicatorRight {
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -414,7 +408,7 @@ button {
     padding: 4px 0;
   }
 
-  .formBodyRight {
+  .CdnPurpleFormBodyRight {
     flex: 0.64;
     display: flex;
     padding: 0;
@@ -422,39 +416,39 @@ button {
     height: auto;
   }
 
-  .indiDiv {
+  .CdnPurpleIndiDiv {
     gap: 1rem;
     width: 100%;
     min-height: 82px;
     margin-bottom: 4px;
   }
 
-  .mobileLogoDiv {
+  .CdnPurpleMobileLogoDiv {
     display: none;
   }
-  .genralLogo {
+  .CdnPurpleGenralLogo {
     display: block !important;
   }
-  .mobileBack {
+  .CdnPurpleMobileBack {
     display: none;
   }
-  .mobileNext {
+  .CdnPurpleMobileNext {
     display: none;
   }
 }
-.nextArrowImgMobile {
+.CdnPurpleNextArrowImgMobile {
   width: 12px;
   height: 12px;
 }
 
-.accordian-div {
+.CdnPurpleAccordianDiv {
   display: flex;
   flex-direction: column;
   gap: 5px;
   width: 100%;
 }
 
-.accordian-children {
+.CdnPurpleAccordianChildren {
   height: fit-content;
   width: 100%;
   border: 1px solid var(--grayAmoutColor);
@@ -462,7 +456,7 @@ button {
   border-radius: 10px;
 }
 
-.accordian-innerdiv {
+.CdnPurpleAccordianInnerdiv {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -471,13 +465,13 @@ button {
   cursor: pointer;
 }
 
-.accordian-icon-div {
+.CdnPurpleAccordianIconDiv {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.accDetailDiv {
+.CdnPurpleAccDetailDiv {
   padding-bottom: 16px;
   display: flex;
   flex-direction: row;
@@ -487,7 +481,7 @@ button {
   padding-right: 16px;
 }
 
-.queDetailDiv {
+.CdnPurpleQueDetailDiv {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -496,7 +490,7 @@ button {
 
 /* //rightside of form body css */
 
-.rightDetailHeader {
+.CdnPurpleRightDetailHeader {
   position: sticky;
   top: 0px;
   background-color: white;
@@ -505,7 +499,7 @@ button {
   font-weight: 600;
   text-align: center;
 }
-.rightDetailWrapper {
+.CdnPurpleRightDetailWrapper {
   position: relative;
   width: 100%;
   display: flex;
@@ -513,7 +507,7 @@ button {
   gap: 20px;
 }
 
-.accWrpper {
+.CdnPurpleAccWrpper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -521,30 +515,30 @@ button {
   gap: 20px;
 }
 
-.arrowWrapper {
+.CdnPurpleArrowWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.4s ease-in-out;
 }
 
-.accTitle {
+.CdnPurpleAccTitle {
   font-size: 16px;
   font-weight: 600;
   color: var(--textNormal);
 }
 
-.arrowWrapper img {
+.CdnPurpleArrowWrapper img {
   width: 24px;
   height: 24px;
 }
 
-.accIcon {
+.CdnPurpleAccIcon {
   width: 24px;
   height: 24px;
 }
 
-.accBtns {
+.CdnPurpleAccBtns {
   border-width: 1px;
   border-style: solid;
   padding: 8px 12px;
@@ -557,22 +551,22 @@ button {
   gap: 10px;
 }
 
-.accBtnActive {
+.CdnPurpleAccBtnActive {
   border-color: var(--textSecondry);
   background-color: var(--btnActiveColorBg);
 }
-.accBtnDefault {
+.CdnPurpleAccBtnDefault {
   border-color: var(--grayAmoutColor);
   background-color: #fff;
 }
 
-.queMainWrapper {
+.CdnPurpleQueMainWrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.queWrapper {
+.CdnPurpleQueWrapper {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--grayAmoutColor);
@@ -583,45 +577,45 @@ button {
   border-radius: 8px;
 }
 
-.accTitleDiv {
+.CdnPurpleAccTitleDiv {
   padding: 12px 0px;
 }
 .queTitleDiv {
   padding-block: 8px 12px;
 }
 @media (min-width: 768px) {
-  .accordian-innerdiv {
+  .CdnPurpleAccordianInnerdiv {
     padding: 18px 16px;
   }
   .queTitleDiv {
     padding-block: 8px 20px;
   }
-  .queWrapper {
+  .CdnPurpleQueWrapper {
     border: none;
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 0;
   }
-  .queMainWrapper {
+  .CdnPurpleQueMainWrapper {
     gap: 16px;
   }
-  .rightDetailHeader {
+  .CdnPurpleRightDetailHeader {
     font-size: 24px;
     line-height: 32px;
     text-align: start;
   }
-  .accTitle {
+  .CdnPurpleAccTitle {
     font-size: 18px;
   }
-  .accBtns {
+  .CdnPurpleAccBtns {
     font-size: 18px;
     padding: 14px 18px;
     /* padding: 18px 22px; */
   }
-  .rightDetailWrapper {
+  .CdnPurpleRightDetailWrapper {
     height: 100%;
   }
-  .accTitleDiv {
+  .CdnPurpleAccTitleDiv {
     padding: 18px 0px;
   }
 }
@@ -646,7 +640,7 @@ button {
   background: var(--textSecondry);
 }
 
-.dragAndDropDiv {
+.CdnPurpleDragAndDropDiv {
   border: 2px solid var(--primaryBtnBg);
   border-radius: 8px;
   width: 100%;
@@ -660,24 +654,24 @@ button {
   cursor: pointer;
 }
 
-.dropIcon {
+.CdnPurpleDropIcon {
   width: 40px;
   height: 40px;
 }
 
-.herotextContainer {
+.CdnPurpleHeroTextContainer {
   font-size: 14px;
   font-weight: 400;
   color: var(--textNormalSec);
 }
 
-.heroText {
+.CdnPurpleHeroText {
   font-weight: 600;
   color: var(--textPrimary);
   margin-right: 4px;
 }
 
-.textContainer {
+.CdnPurpleTextContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -685,11 +679,11 @@ button {
   gap: 4px;
 }
 
-.bgDragover {
+.CdnPurpleBgDragover {
   background-color: var(--btnActiveColorBg);
 }
 
-.ImageDescWrppaer {
+.CdnPurpleImageDescWrppaer {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--grayAmoutColor);
@@ -700,22 +694,22 @@ button {
   border-radius: 8px;
 }
 
-.issueImageWrapper {
+.CdnPurpleIssueImageWrapper {
   overflow-x: auto;
   display: flex;
   gap: 4px;
 }
 
-.issueImageWrapper::-webkit-scrollbar {
+.CdnPurpleIssueImageWrapper::-webkit-scrollbar {
   width: 6px; /* Width of the vertical scrollbar */
   height: 6px; /* Height of the horizontal scrollbar */
 }
 
-.imgRelativeDiv {
+.CdnPurpleImgRelativeDiv {
   position: relative;
 }
 
-.issueimage {
+.CdnPurpleIssueImage {
   /* width: 260px; */
   /* height: 195px; */
   width: 150px;
@@ -723,19 +717,19 @@ button {
   object-fit: cover;
 }
 
-.textAreaWrapper {
+.CdnPurpleTextAreaWrapper {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.textAreaWrapper label {
+.CdnPurpleTextAreaWrapper label {
   font-size: 14px;
   font-weight: 500;
   color: var(--textNormal);
 }
 
-.textAreaWrapper textarea {
+.CdnPurpleTextAreaWrapper textarea {
   resize: none;
   border-radius: 8px;
   border: 1px solid var(--grayAmoutColor);
@@ -748,7 +742,7 @@ button {
   overflow: auto;
 }
 
-.trashIcon {
+.CdnPurpleTrashIcon {
   width: 18px;
   height: 18px;
   display: flex;
@@ -766,17 +760,17 @@ button {
   border-radius: 50%;
   transition: all 0.2s ease-in-out;
 }
-.trashIcon:hover {
+.CdnPurpleTrashIcon:hover {
   width: 20px;
   height: 20px;
 }
 
-.trashIcon img {
+.CdnPurpleTrashIcon img {
   width: 100%;
   height: 100%;
 }
 
-.uploadingStateDiv {
+.CdnPurpleUploadingStateDiv {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--grayAmoutColor);
@@ -788,26 +782,26 @@ button {
   gap: 4px;
 }
 
-.uploadStatetext {
+.CdnPurpleUploadStatetext {
   font-size: 14px;
   font-weight: 500;
   color: var(--textNormal);
 }
 
-.uploadSize {
+.CdnPurpleUploadSize {
   font-size: 14px;
   font-weight: 400;
   color: var(--textNormal);
 }
 
-.uploadLoadingBarWrapper {
+.CdnPurpleUploadLoadingBarWrapper {
   display: flex;
   gap: 12px;
   justify-content: center;
   align-items: center;
 }
 
-.percentage {
+.CdnPurplePercentage {
   font-size: 14px;
   font-weight: 500;
   color: var(--textNormal);
@@ -815,7 +809,7 @@ button {
   height: 20px;
 }
 
-.progressBarLoader {
+.CdnPurpleProgressBarLoader {
   flex: 1;
   height: 8px;
   display: flex;
@@ -825,26 +819,26 @@ button {
   overflow: hidden;
 }
 
-.progressbarwidth {
+.CdnPurpleProgressBarWidth {
   border-radius: 20px;
   background-color: var(--primaryBtnBg);
   transition: width 2s ease-in-out;
 }
 
-.customerWrapper {
+.CdnPurpleCustomerWrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.customerSwitch {
+.CdnPurpleCustomerSwitch {
   display: flex;
   gap: 24px;
   justify-content: flex-start;
   align-items: center;
 }
 
-.customerFieldsWrapper {
+.CdnPurpleCustomerFieldsWrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
@@ -854,20 +848,20 @@ button {
   width: 100%;
 }
 
-.inputFieldsWrapper {
+.CdnPurpleInputFieldsWrapper {
   display: flex;
   flex-direction: column;
   gap: 6px;
   flex: 1;
 }
 
-.inputCustomerLabel {
+.CdnPurpleInputCustomerLabel {
   font-size: 14px;
   font-weight: 500;
   color: var(--textNormal);
 }
 
-.inputCustomerInputTag {
+.CdnPurpleInputCustomerInputTag {
   border: 1px solid var(--grayAmoutColor);
   color: #667085;
   font-size: 14px;
@@ -877,59 +871,59 @@ button {
   border-radius: 8px;
 }
 
-.scheduleWrapper {
+.CdnPurpleScheduleWrapper {
   display: flex;
   flex-direction: column;
 }
 
-.slotBtn {
+.CdnPurpleSlotBtn {
   width: 100%;
   font-size: 14px !important;
   cursor: pointer;
 }
 
-.slotBtn img {
+.CdnPurpleSlotBtn img {
   width: 20px !important;
   height: 20px !important;
 }
 
 @media (min-width: 768px) {
-  .slotBtn {
+  .CdnPurpleSlotBtn {
     width: 100%;
     cursor: pointer;
     font-size: 16px !important;
   }
-  .slotBtn img {
+  .CdnPurpleSlotBtn img {
     width: 22px !important;
     height: 22px !important;
   }
-  .termsCheckBoxWrapper {
+  .CdnPurpleTermsCheckBoxWrapper {
     justify-content: center !important;
   }
-  .termsCheckBoxWrapper label {
+  .CdnPurpleTermsCheckBoxWrapper label {
     font-size: 18px !important;
   }
   input[type="checkbox"] {
-    accent-color: var(--textPrimary);
-    width: 20px;
-    height: 20px;
+    accent-color: var(--textPrimary) !important;
+    width: 20px !important;
+    height: 20px !important;
   }
 }
 
-.slotButtonWrapper {
+.CdnPurpleSlotButtonWrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding-top: 10px;
 }
 
-.slotBtn span {
+.CdnPurpleSlotBtn span {
   height: 100%;
   display: block;
   flex-grow: 1;
 }
 
-.termsCheckBoxWrapper {
+.CdnPurpleTermsCheckBoxWrapper {
   display: flex;
   padding: 16px 0;
   justify-content: flex-start;
@@ -937,28 +931,28 @@ button {
   gap: 8px;
 }
 
-.termsCheckBoxWrapper label {
+.CdnPurpleTermsCheckBoxWrapper label {
   font-size: 14px;
   font-weight: 600;
   color: var(--textNormal);
 }
 
 input[type="checkbox"] {
-  accent-color: var(--textPrimary);
-  width: 16px;
-  height: 16px;
+  accent-color: var(--textPrimary) !important;
+  width: 16px !important;
+  height: 16px !important;
 }
 
-.confirmationButtons {
+.CdnPurpleConfirmationButtons {
   flex: 1;
 }
 
-.confirmationButtons span {
+.CdnPurpleConfirmationButtons span {
   height: 100%;
   flex-grow: 1;
 }
 
-.successPageDiv {
+.CdnPurpleSuccessPageDiv {
   width: 100%;
   height: 100%;
   display: flex;
@@ -968,23 +962,23 @@ input[type="checkbox"] {
   gap: 24px;
 }
 
-.logoOfSuccessDiv img {
+.CdnPurplelogoOfSuccessDiv img {
   width: 134px;
   height: 78px;
 }
 
-.heroImageWrapper {
+.CdnPurpleHeroImageWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.heroImageWrapper img {
+.CdnPurpleHeroImageWrapper img {
   width: 256px;
   height: 256px;
 }
 
-.successTextDiv {
+.CdnPurpleSuccessTextDiv {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -992,14 +986,14 @@ input[type="checkbox"] {
   gap: 24px;
 }
 
-.successTextDiv h2 {
+.CdnPurpleSuccessTextDiv h2 {
   font-size: 24px;
   font-weight: 600;
   color: #000000;
   text-align: center;
 }
 
-.successTextDiv p {
+.CdnPurpleSuccessTextDiv p {
   width: 90%;
   font-size: 18px;
   font-weight: 600;
@@ -1007,7 +1001,7 @@ input[type="checkbox"] {
   text-align: center;
 }
 
-.goToHomePageBtn {
+.CdnPurpleGoToHomePageBtn {
   padding: 8px 12px;
   border-radius: 8px;
   outline: none;
@@ -1021,44 +1015,44 @@ input[type="checkbox"] {
   align-items: center;
   gap: 4px;
 }
-.goToHomePageBtn img {
+.CdnPurpleGoToHomePageBtn img {
   width: 20px;
   height: 20px;
 }
 
 @media (min-width: 768px) {
-  .successTextDiv p {
+  .CdnPurpleSuccessTextDiv p {
     width: auto;
   }
-  .successPageDiv {
+  .CdnPurpleSuccessPageDiv {
     min-height: 540px;
   }
-  .goToHomePageBtn {
+  .CdnPurpleGoToHomePageBtn {
     padding: 21px;
     font-size: 18px;
     font-weight: 600;
     gap: 10px;
   }
-  .goToHomePageBtn img {
+  .CdnPurpleGoToHomePageBtn img {
     width: 24px;
     height: 24px;
   }
 }
 
-.ulList {
+.CdnPurpleulList {
   display: flex;
   flex-direction: column;
   padding-left: 1.5rem;
   padding-bottom: 32px;
 }
 
-.ulList li {
+.CdnPurpleulList li {
   font-size: 16px;
   font-weight: 400;
   padding-right: 5px;
 }
 
-.ulList li span {
+.CdnPurpleulList li span {
   font-size: 16px;
   font-weight: 600;
 }

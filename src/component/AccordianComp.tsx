@@ -68,17 +68,21 @@ const AccordianComp = ({ accChild = [], setValue, watch }: Props) => {
     <>
       {issueData &&
         issueData.map((item: question) => (
-          <div className=" accordian-div" key={item.item}>
-            <div className="accordian-children">
+          <div className=" CdnPurpleAccordianDiv" key={item.item}>
+            <div className="CdnPurpleAccordianChildren">
               <div
-                className=" accordian-innerdiv "
+                className=" CdnPurpleAccordianInnerdiv "
                 onClick={() => toggleHandleAccordian(item.item)}
               >
-                <div className="accordian-icon-div ">
-                  <img src={HeatingImg} alt="img" className="accIcon" />
-                  <p className="accTitle">{item.item}</p>
+                <div className="CdnPurpleAccordianIconDiv ">
+                  <img
+                    src={HeatingImg}
+                    alt="img"
+                    className="CdnPurpleAccIcon"
+                  />
+                  <p className="CdnPurpleAccTitle">{item.item}</p>
                 </div>
-                <div className="arrowWrapper">
+                <div className="CdnPurpleArrowWrapper">
                   {active.includes(item.item) ? (
                     <img src={upArrow} alt="up" />
                   ) : (
@@ -87,12 +91,14 @@ const AccordianComp = ({ accChild = [], setValue, watch }: Props) => {
                 </div>
               </div>
               {active.includes(item.item) && (
-                <div className="accDetailDiv">
+                <div className="CdnPurpleAccDetailDiv">
                   {item.subCategories.map((acc: any, index: number) => (
                     <button
                       type="button"
-                      className={`accBtns ${
-                        acc.checked ? "accBtnActive" : "accBtnDefault"
+                      className={`CdnPurpleAccBtns ${
+                        acc.checked
+                          ? "CdnPurpleAccBtnActive"
+                          : "CdnPurpleAccBtnDefault"
                       }`}
                       key={index}
                       onClick={() => handleSelect(item.item, acc.id)}

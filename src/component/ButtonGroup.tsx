@@ -20,31 +20,35 @@ const ButtonGroup = ({
     <>
       <button
         type="button"
-        className="btn textNormal borderOfBtn pointer"
+        className="CdnPurpleBtn CdnPurpleTextNormal CdnPurpleBorderOfBtn CdnPurplePointer"
         onClick={handleCancel}
       >
         Cancel
       </button>
-      <div className="btnWrapper">
+      <div className="CdnPurpleBtnWrapper">
         {currentId !== indicatorList[0].id && (
           <button
             type="button"
-            className="btn bgPrimary btnPrimary prevNext pointer"
+            className="CdnPurpleBtn CdnPurpleBgPrimary CdnPurpleBtnPrimary CdnPurplePrevNext CdnPurplePointer"
             onClick={goToPrevious}
           >
-            <img src={ArrowIcon} alt="arrow" className="prevArrowimg" />
+            <img
+              src={ArrowIcon}
+              alt="arrow"
+              className="CdnPurplePrevArrowimg"
+            />
             Back
           </button>
         )}
         <button
           type="button"
-          className="btn bgPrimary btnPrimary prevNext pointer"
+          className="CdnPurpleBtn CdnPurpleBgPrimary CdnPurpleBtnPrimary CdnPurplePrevNext CdnPurplePointer"
           onClick={goToNext}
         >
           {currentId === indicatorList[indicatorList.length - 1].id
             ? "Confirm"
             : "Next"}
-          <img src={ArrowIcon} alt="arrow" className="nextArrowimg" />
+          <img src={ArrowIcon} alt="arrow" className="CdnPurpleNextArrowimg" />
         </button>
       </div>
     </>

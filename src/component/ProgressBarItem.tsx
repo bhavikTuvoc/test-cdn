@@ -46,20 +46,28 @@ const ProgressBarItem = ({
       case "Default":
         return (
           <>
-            <div className={`indicatorDetail ${"textNormalSec"}`}>{detail}</div>
+            <div
+              className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextNormalSec"}`}
+            >
+              {detail}
+            </div>
           </>
         );
       case "Active":
         return (
           <>
-            <div className={`indicatorDetail ${"textSecondry"}`}>{detail}</div>
+            <div
+              className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextSecondry"}`}
+            >
+              {detail}
+            </div>
           </>
         );
       case "Completed":
         return (
           <>
             {issueOptions.length ? (
-              <ul className="ulList">
+              <ul className="CdnPurpleulList">
                 {issueOptions.map((detail: any) => (
                   <li key={detail.item}>
                     {detail.item}: <span>{detail.selected}</span>
@@ -67,7 +75,9 @@ const ProgressBarItem = ({
                 ))}
               </ul>
             ) : (
-              <div className={`indicatorDetail ${"textSecondry"}`}>
+              <div
+                className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextSecondry"}`}
+              >
                 {detail}
               </div>
             )}
@@ -75,7 +85,11 @@ const ProgressBarItem = ({
         );
       default:
         return (
-          <img src={DefaultIndicator} alt="active" className="indicatorWH" />
+          <img
+            src={DefaultIndicator}
+            alt="active"
+            className="CdnPurpleIndicatorWH"
+          />
         );
     }
   };
@@ -84,20 +98,28 @@ const ProgressBarItem = ({
       case "Default":
         return (
           <>
-            <div className={`indicatorDetail ${"textNormalSec"}`}>{detail}</div>
+            <div
+              className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextNormalSec"}`}
+            >
+              {detail}
+            </div>
           </>
         );
       case "Active":
         return (
           <>
-            <div className={`indicatorDetail ${"textSecondry"}`}>{detail}</div>
+            <div
+              className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextSecondry"}`}
+            >
+              {detail}
+            </div>
           </>
         );
       case "Completed":
         return (
           <>
             {detailsOptions.length ? (
-              <ul className="ulList">
+              <ul className="CdnPurpleulList">
                 {detailsOptions.map((detail: any) => (
                   <li key={detail.item}>
                     {detail.item}: <span>{detail.selected}</span>
@@ -105,7 +127,9 @@ const ProgressBarItem = ({
                 ))}
               </ul>
             ) : (
-              <div className={`indicatorDetail ${"textSecondry"}`}>
+              <div
+                className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextSecondry"}`}
+              >
                 {detail}
               </div>
             )}
@@ -113,7 +137,11 @@ const ProgressBarItem = ({
         );
       default:
         return (
-          <img src={DefaultIndicator} alt="active" className="indicatorWH" />
+          <img
+            src={DefaultIndicator}
+            alt="active"
+            className="CdnPurpleIndicatorWH"
+          />
         );
     }
   };
@@ -122,24 +150,40 @@ const ProgressBarItem = ({
       case "Default":
         return (
           <>
-            <div className={`indicatorDetail ${"textNormalSec"}`}>{detail}</div>
+            <div
+              className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextNormalSec"}`}
+            >
+              {detail}
+            </div>
           </>
         );
       case "Active":
         return (
           <>
-            <div className={`indicatorDetail ${"textSecondry"}`}>{detail}</div>
+            <div
+              className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextSecondry"}`}
+            >
+              {detail}
+            </div>
           </>
         );
       case "Completed":
         return (
           <>
-            <div className={`indicatorDetail ${"textSecondry"}`}>{detail}</div>
+            <div
+              className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextSecondry"}`}
+            >
+              {detail}
+            </div>
           </>
         );
       default:
         return (
-          <img src={DefaultIndicator} alt="active" className="indicatorWH" />
+          <img
+            src={DefaultIndicator}
+            alt="active"
+            className="CdnPurpleIndicatorWH"
+          />
         );
     }
   };
@@ -148,12 +192,20 @@ const ProgressBarItem = ({
     switch (flag) {
       case "Default":
         return (
-          <img src={DefaultIndicator} alt="default" className="indicatorWH" />
+          <img
+            src={DefaultIndicator}
+            alt="default"
+            className="CdnPurpleIndicatorWH"
+          />
         );
       case "Active":
         return (
-          <div className="indicatorShadow rounded-full indicatorWH">
-            <img src={ActiveIndicator} alt="active" className="indicatorWH " />
+          <div className="CdnPurpleIndicatorShadow CdnPurpleRoundedFull CdnPurpleIndicatorWH">
+            <img
+              src={ActiveIndicator}
+              alt="active"
+              className="CdnPurpleIndicatorWH "
+            />
           </div>
         );
       case "Completed":
@@ -161,44 +213,48 @@ const ProgressBarItem = ({
           <img
             src={CompletedIndicator}
             alt="Completed"
-            className="indicatorWH"
+            className="CdnPurpleIndicatorWH"
           />
         );
       default:
         return (
-          <img src={DefaultIndicator} alt="active" className="indicatorWH" />
+          <img
+            src={DefaultIndicator}
+            alt="active"
+            className="CdnPurpleIndicatorWH"
+          />
         );
     }
   };
   return (
-    <div className="indiDiv">
+    <div className="CdnPurpleIndiDiv">
       {/* left */}
-      <div className="indicatorLeft">
-        <div className="innerDiv">
+      <div className="CdnPurpleIndicatorLeft">
+        <div className="CdnPurpleInnerDiv">
           {/* indicator rendere */}
           {renderContentBasedOnFlag()}
 
           {/*line baar*/}
           {flag === "Completed" ? (
             <div
-              className={`lineBar bgPrimary mobileNone`}
+              className={`CdnPurplelineBar CdnPurpleBgPrimary CdnPurpleMobileNone`}
               style={{ display: lastItem ? "none" : "" }}
             />
           ) : (
             <div
-              className={`lineBar bgIndicatorColor mobileNone`}
+              className={`CdnPurplelineBar CdnPurpleBgIndicatorColor CdnPurpleMobileNone`}
               style={{ display: lastItem ? "none" : "" }}
             />
           )}
         </div>
       </div>
       {/* right */}
-      <div className="indicatorRight">
+      <div className="CdnPurpleIndicatorRight">
         <div
-          className={`indicatorHeader ${
+          className={`CdnPurpleIndicatorHeader ${
             flag === "Active" || flag === "Completed"
-              ? "textPrimary"
-              : "textNormal"
+              ? "CdnPurpleTextPrimary"
+              : "CdnPurpleTextNormal"
           } `}
         >
           {label}
@@ -215,7 +271,7 @@ const ProgressBarItem = ({
 export default ProgressBarItem;
 
 // {
-//   //   <ul className="ulList">
+//   //   <ul className="CdnPurpleulList">
 //   // {detailsOptions.map((detail: any) => (
 //   //   <li key={detail.item}>
 //   //     {detail.item}: <span>{detail.selected}</span>
@@ -224,10 +280,10 @@ export default ProgressBarItem;
 //   // </ul>
 // }
 // {/* <div
-//           className={`indicatorDetail ${
+//           className={`CdnPurpleIndicatorDetail ${
 //             flag === "Active" || flag === "Completed"
-//               ? "textSecondry"
-//               : "textNormalSec"
+//               ? "CdnPurpleTextSecondry"
+//               : "CdnPurpleTextNormalSec"
 //           }`}
 //         >
 //           {detail}

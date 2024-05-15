@@ -56,16 +56,18 @@ const QuestionComp = ({ setValue, questiondata }: Props) => {
   return (
     <>
       {questionData.map((item: any) => (
-        <div className="queWrapper" key={item.item}>
+        <div className="CdnPurpleQueWrapper" key={item.item}>
           <div className="queTitleDiv">
-            <p className="accTitle">{item.item}</p>
+            <p className="CdnPurpleAccTitle">{item.item}</p>
           </div>
-          <div className="queDetailDiv">
+          <div className="CdnPurpleQueDetailDiv">
             {item.subCategories.map((subCategory: any) => (
               <button
                 type="button"
-                className={`accBtns ${
-                  subCategory.checked ? "accBtnActive" : "accBtnDefault"
+                className={`CdnPurpleAccBtns ${
+                  subCategory.checked
+                    ? "CdnPurpleAccBtnActive"
+                    : "CdnPurpleAccBtnDefault"
                 }`}
                 key={subCategory.id}
                 onClick={() => handleSelect(item.item, subCategory.id)}

@@ -89,14 +89,17 @@ const DragAndDropComp: React.FC<DragAndDropCompProps> = ({
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         style={{ opacity: isDragOver ? 0.7 : 1 }}
-        className={`dragAndDropDiv ${isDragOver ? "bgDragover" : ""}`}
+        className={`CdnPurpleDragAndDropDiv ${
+          isDragOver ? "CdnPurpleBgDragover" : ""
+        }`}
       >
-        <img src={dropIcon} alt="Drop here" className="dropIcon" />
-        <div className="textContainer">
-          <p className="herotextContainer">
-            <span className="heroText">Click to upload</span> or drag and drop
+        <img src={dropIcon} alt="Drop here" className="CdnPurpleDropIcon" />
+        <div className="CdnPurpleTextContainer">
+          <p className="CdnPurpleHeroTextContainer">
+            <span className="CdnPurpleHeroText">Click to upload</span> or drag
+            and drop
           </p>
-          <p className="herotextContainer">
+          <p className="CdnPurpleHeroTextContainer">
             SVG, PNG, JPG, or GIF (max. 800*400px)
           </p>
         </div>

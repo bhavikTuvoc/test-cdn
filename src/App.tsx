@@ -5,9 +5,9 @@ import { FormDataProvider } from "./Provider/FormDataConext";
 
 function App() {
   return (
-    // <div className="App app-container" style={{ display: "none" }}>
-    <div className="App app-container" style={{ display: "block" }}>
-      <div className="bgBlur popUpWrapper">
+    // <div className="CdnPurpleApp app-container" style={{ display: "none" }}>
+    <div className="CdnPurpleApp app-container" style={{ display: "block" }}>
+      <div className="CdnPurpleBgBlur CdnPurplePopUpWrapper">
         <FormDataProvider>
           <PopUp />
         </FormDataProvider>

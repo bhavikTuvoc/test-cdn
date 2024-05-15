@@ -56,12 +56,14 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
   };
 
   return (
-    <div className="customerWrapper">
-      <div className="customerSwitch">
+    <div className="CdnPurpleCustomerWrapper">
+      <div className="CdnPurpleCustomerSwitch">
         <button
           type="button"
-          className={`accBtns ${
-            currentCustomerStatus === "Yes" ? "accBtnActive" : "accBtnDefault"
+          className={`CdnPurpleAccBtns ${
+            currentCustomerStatus === "Yes"
+              ? "CdnPurpleAccBtnActive"
+              : "CdnPurpleAccBtnDefault"
           }`}
           onClick={() => handleSelectedButton("Yes")}
         >
@@ -74,8 +76,10 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
         </button>
         <button
           type="button"
-          className={`accBtns ${
-            currentCustomerStatus === "No" ? "accBtnActive" : "accBtnDefault"
+          className={`CdnPurpleAccBtns ${
+            currentCustomerStatus === "No"
+              ? "CdnPurpleAccBtnActive"
+              : "CdnPurpleAccBtnDefault"
           }`}
           onClick={() => handleSelectedButton("No")}
         >
@@ -87,15 +91,15 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
           {"No"}
         </button>
       </div>
-      <div className="customerFieldsWrapper">
+      <div className="CdnPurpleCustomerFieldsWrapper">
         {currentCustomerStatus === "Yes" && (
           <>
-            <div className="inputFieldsWrapper">
-              <label htmlFor="phone" className="inputCustomerLabel">
+            <div className="CdnPurpleInputFieldsWrapper">
+              <label htmlFor="phone" className="CdnPurpleInputCustomerLabel">
                 Phone number*
               </label>
               <Input
-                className="inputCustomerInputTag"
+                className="CdnPurpleInputCustomerInputTag"
                 id="phone"
                 name="oldphone"
                 type="tel"
@@ -109,12 +113,12 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
 
         {currentCustomerStatus === "No" && (
           <>
-            <div className="inputFieldsWrapper">
-              <label htmlFor="name" className="inputCustomerLabel">
+            <div className="CdnPurpleInputFieldsWrapper">
+              <label htmlFor="name" className="CdnPurpleInputCustomerLabel">
                 Name*
               </label>
               <Input
-                className="inputCustomerInputTag"
+                className="CdnPurpleInputCustomerInputTag"
                 id="name"
                 name="name"
                 type="text"
@@ -122,12 +126,12 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
                 placeholder="Enter your name"
               />
             </div>
-            <div className="inputFieldsWrapper">
-              <label htmlFor="email" className="inputCustomerLabel">
+            <div className="CdnPurpleInputFieldsWrapper">
+              <label htmlFor="email" className="CdnPurpleInputCustomerLabel">
                 Email*
               </label>
               <Input
-                className="inputCustomerInputTag"
+                className="CdnPurpleInputCustomerInputTag"
                 id="email"
                 name="email"
                 type="email"
@@ -135,12 +139,12 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
                 placeholder="Enter your email"
               />
             </div>
-            <div className="inputFieldsWrapper">
-              <label htmlFor="address" className="inputCustomerLabel">
+            <div className="CdnPurpleInputFieldsWrapper">
+              <label htmlFor="address" className="CdnPurpleInputCustomerLabel">
                 Address*
               </label>
               <Input
-                className="inputCustomerInputTag"
+                className="CdnPurpleInputCustomerInputTag"
                 id="address"
                 name="address"
                 type="text"
@@ -148,12 +152,12 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
                 placeholder="Enter your address"
               />
             </div>
-            <div className="inputFieldsWrapper">
-              <label htmlFor="phone" className="inputCustomerLabel">
+            <div className="CdnPurpleInputFieldsWrapper">
+              <label htmlFor="phone" className="CdnPurpleInputCustomerLabel">
                 Phone number*
               </label>
               <Input
-                className="inputCustomerInputTag"
+                className="CdnPurpleInputCustomerInputTag"
                 id="phone"
                 name="newphone"
                 type="tel"

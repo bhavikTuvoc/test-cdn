@@ -27,17 +27,17 @@ const RightCategoryComp = ({
   const header = data.header;
 
   return (
-    <div className="rightDetailWrapper ">
+    <div className="CdnPurpleRightDetailWrapper ">
       <div
         className={`${
-          data && data?.categoryType === "Confirm" && "border-b"
-        } showMobile`}
+          data && data?.categoryType === "Confirm" && "CdnPurpleBorderB"
+        } CdnPurpleShowMobile`}
       >
         {data && data?.categoryType === "Confirm" && <>{child}</>}
       </div>
-      <h3 className="rightDetailHeader">{header}</h3>
+      <h3 className="CdnPurpleRightDetailHeader">{header}</h3>
       {data && data?.categoryType === "Accordian" && (
-        <div className="accWrpper">
+        <div className="CdnPurpleAccWrpper">
           <AccordianComp
             watch={watch}
             setValue={setValue}
@@ -46,13 +46,13 @@ const RightCategoryComp = ({
         </div>
       )}
       {data && data?.categoryType === "Question" && (
-        <div className="queMainWrapper">
+        <div className="CdnPurpleQueMainWrapper">
           <QuestionComp setValue={setValue} questiondata={data.category} />
         </div>
       )}
 
       {data && data?.categoryType === "Photo" && (
-        <div className="queMainWrapper">
+        <div className="CdnPurpleQueMainWrapper">
           {data?.category.map((item: any) => (
             <PhotosComp
               key={item.item}
@@ -68,7 +68,7 @@ const RightCategoryComp = ({
       )}
 
       {data && data?.categoryType === "Customer" && (
-        <div className="queMainWrapper">
+        <div className="CdnPurpleQueMainWrapper">
           <CustomerCategoryComp
             register={register}
             watch={watch}
@@ -78,12 +78,12 @@ const RightCategoryComp = ({
       )}
 
       {data && data?.categoryType === "Schedule" && (
-        <div className="queMainWrapper">
+        <div className="CdnPurpleQueMainWrapper">
           <ScheduleComp register={register} watch={watch} setValue={setValue} />
         </div>
       )}
       {data && data?.categoryType === "Confirm" && (
-        <div className="queMainWrapper">
+        <div className="CdnPurpleQueMainWrapper">
           <ConfirmationComp
             register={register}
             watch={watch}

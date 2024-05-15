@@ -39,16 +39,18 @@ const ScheduleComp = ({ register, setValue }: Props) => {
   };
 
   return (
-    <div className="scheduleWrapper">
+    <div className="CdnPurpleScheduleWrapper">
       <CalenderComp setStartDate={setSlotDate} startDate={slotDate} />
-      <div className="slotButtonWrapper">
+      <div className="CdnPurpleSlotButtonWrapper">
         {slotButtonsArray &&
           slotButtonsArray.map((s: slotButtonArrayType) => (
             <button
               key={s.id}
               type="button"
-              className={`accBtns slotBtn ${
-                s.id === `${slot}` ? "accBtnActive" : "accBtnDefault"
+              className={`CdnPurpleAccBtns CdnPurpleSlotBtn ${
+                s.id === `${slot}`
+                  ? "CdnPurpleAccBtnActive"
+                  : "CdnPurpleAccBtnDefault"
               }`}
               onClick={() => handleSelectedButton(`${s.id}`)}
             >
@@ -61,7 +63,7 @@ const ScheduleComp = ({ register, setValue }: Props) => {
             </button>
           ))}
       </div>
-      <div className="termsCheckBoxWrapper">
+      <div className="CdnPurpleTermsCheckBoxWrapper">
         <Input
           id="termsAccept"
           type="checkbox"

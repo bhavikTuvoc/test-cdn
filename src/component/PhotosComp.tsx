@@ -69,7 +69,7 @@ const PhotosComp = ({ control, setValue, register, watch }: Props) => {
 
   return (
     <>
-      <div className="queDetailDiv">
+      <div className="CdnPurpleQueDetailDiv">
         <DragAndDropComp
           onFileData={handleImageData}
           inputRef="files"
@@ -77,14 +77,18 @@ const PhotosComp = ({ control, setValue, register, watch }: Props) => {
           control={control}
         />
       </div>
-      <div className="ImageDescWrppaer">
-        <div className="issueImageWrapper">
+      <div className="CdnPurpleImageDescWrppaer">
+        <div className="CdnPurpleIssueImageWrapper">
           {imageData &&
             imageData.map((item: imageData, index: number) => (
-              <div key={index} className="imgRelativeDiv">
-                <img src={item.url} alt={`${index}`} className="issueimage" />
+              <div key={index} className="CdnPurpleImgRelativeDiv">
+                <img
+                  src={item.url}
+                  alt={`${index}`}
+                  className="CdnPurpleIssueImage"
+                />
                 <button
-                  className="trashIcon"
+                  className="CdnPurpleTrashIcon"
                   type="button"
                   onClick={() => handleRemove(item.url)}
                 >
@@ -93,7 +97,7 @@ const PhotosComp = ({ control, setValue, register, watch }: Props) => {
               </div>
             ))}
         </div>
-        <div className="textAreaWrapper">
+        <div className="CdnPurpleTextAreaWrapper">
           <label htmlFor="desc">Description</label>
           <TextArea
             name="desc"
@@ -105,15 +109,17 @@ const PhotosComp = ({ control, setValue, register, watch }: Props) => {
         </div>
       </div>
       {imageData.length > 0 && (
-        <div className="uploadingStateDiv">
-          <p className="uploadStatetext">
+        <div className="CdnPurpleUploadingStateDiv">
+          <p className="CdnPurpleUploadStatetext">
             {percentCount === 100 ? "Uploaded..." : "Uploading..."}
           </p>
-          <p className="uploadSize">{imageData[imageData.length - 1]?.size}</p>
-          <div className="uploadLoadingBarWrapper">
-            <div className="progressBarLoader">
+          <p className="CdnPurpleUploadSize">
+            {imageData[imageData.length - 1]?.size}
+          </p>
+          <div className="CdnPurpleUploadLoadingBarWrapper">
+            <div className="CdnPurpleProgressBarLoader">
               <div
-                className="progressbarwidth"
+                className="CdnPurpleProgressBarWidth"
                 key={percentCount}
                 // key={imageData[imageData.length - 1]?.size}
                 style={{
@@ -122,7 +128,7 @@ const PhotosComp = ({ control, setValue, register, watch }: Props) => {
                 }}
               ></div>
             </div>
-            <div className="percentage">{percentCount}%</div>
+            <div className="CdnPurplePercentage">{percentCount}%</div>
           </div>
         </div>
       )}
