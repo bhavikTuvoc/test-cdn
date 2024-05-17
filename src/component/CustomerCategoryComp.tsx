@@ -149,7 +149,7 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
                 name="address"
                 type="text"
                 register={register}
-                placeholder="Enter your address"
+                placeholder="Address"
               />
             </div>
             <div className="CdnPurpleInputFieldsWrapper">

@@ -108,7 +108,7 @@ const AccordianComp = ({ accChild = [], setValue, watch }: Props) => {
                         src={acc.checked ? checkCircle : uncheckCircle}
                         alt={acc.checked ? "checked" : "unchecked"}
                       />
-                      {acc.subItem}
+                      <p>{acc.subItem}</p>
                     </button>
                   ))}{" "}
                 </div>

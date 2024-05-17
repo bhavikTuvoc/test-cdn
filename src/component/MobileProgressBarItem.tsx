@@ -76,7 +76,7 @@ const MobileProgressBarItem = ({
               </ul>
             ) : (
               <div
-                className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextSecondry"}`}
+                className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextNormalSec"}`}
               >
                 {detail}
               </div>
@@ -128,7 +128,7 @@ const MobileProgressBarItem = ({
               </ul>
             ) : (
               <div
-                className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextSecondry"}`}
+                className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextNormalSec"}`}
               >
                 {detail}
               </div>
@@ -171,7 +171,7 @@ const MobileProgressBarItem = ({
         return (
           <>
             <div
-              className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextSecondry"}`}
+              className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextNormalSec"}`}
             >
               {detail}
             </div>
@@ -251,9 +251,7 @@ const MobileProgressBarItem = ({
       <div className="CdnPurpleIndicatorRightMobile">
         <div
           className={`CdnPurpleIndicatorHeader ${
-            flag === "Active" || flag === "Completed"
-              ? "CdnPurpleTextPrimary"
-              : "CdnPurpleTextNormal"
+            flag === "Active" ? "CdnPurpleTextPrimary" : "CdnPurpleTextNormal"
           } `}
         >
           {label}

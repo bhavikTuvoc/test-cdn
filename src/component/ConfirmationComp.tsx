@@ -19,6 +19,9 @@ const ConfirmationComp = ({ setValue, watch }: Props) => {
   };
   return (
     <div>
+      <p className="CdnPurpleConfirmationText">
+        Where can we send your confirmation ?
+      </p>
       <div className="CdnPurpleCustomerSwitch">
         <button
           type="button"

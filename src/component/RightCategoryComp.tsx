@@ -35,7 +35,15 @@ const RightCategoryComp = ({
       >
         {data && data?.categoryType === "Confirm" && <>{child}</>}
       </div>
-      <h3 className="CdnPurpleRightDetailHeader">{header}</h3>
+      <h3
+        className={`CdnPurpleRightDetailHeader ${
+          data &&
+          data?.categoryType === "Confirm" &&
+          "CdnPurpleHeaderHideMobileConfirm"
+        }`}
+      >
+        {header}
+      </h3>
       {data && data?.categoryType === "Accordian" && (
         <div className="CdnPurpleAccWrpper">
           <AccordianComp

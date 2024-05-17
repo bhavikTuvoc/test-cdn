@@ -1,6 +1,7 @@
 import ActiveIndicator from "../assets/Active.svg";
 import DefaultIndicator from "../assets/Default.svg";
 import CompletedIndicator from "../assets/Completed.svg";
+import CompletedIndicatorMobile from "../assets/Completed-Mobile.svg";
 import { UseFormWatch } from "react-hook-form";
 type Props = {
   label?: string;
@@ -128,7 +129,7 @@ const ProgressBarItem = ({
               </ul>
             ) : (
               <div
-                className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextSecondry"}`}
+                className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextNormalSec"}`}
               >
                 {detail}
               </div>
@@ -171,7 +172,7 @@ const ProgressBarItem = ({
         return (
           <>
             <div
-              className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextSecondry"}`}
+              className={`CdnPurpleIndicatorDetail ${"CdnPurpleTextNormalSec"}`}
             >
               {detail}
             </div>
@@ -210,11 +211,18 @@ const ProgressBarItem = ({
         );
       case "Completed":
         return (
-          <img
-            src={CompletedIndicator}
-            alt="Completed"
-            className="CdnPurpleIndicatorWH"
-          />
+          <>
+            <img
+              src={CompletedIndicator}
+              alt="Completed"
+              className="CdnPurpleIndicatorWH CdnPurpleCompleteIcon"
+            />
+            <img
+              src={CompletedIndicatorMobile}
+              alt="Completed"
+              className="CdnPurpleIndicatorWH CdnPurpleCompleteIconNotMobile"
+            />
+          </>
         );
       default:
         return (
@@ -252,9 +260,7 @@ const ProgressBarItem = ({
       <div className="CdnPurpleIndicatorRight">
         <div
           className={`CdnPurpleIndicatorHeader ${
-            flag === "Active" || flag === "Completed"
-              ? "CdnPurpleTextPrimary"
-              : "CdnPurpleTextNormal"
+            flag === "Active" ? "CdnPurpleTextPrimary" : "CdnPurpleTextNormal"
           } `}
         >
           {label}

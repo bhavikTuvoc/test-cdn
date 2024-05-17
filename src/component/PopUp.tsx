@@ -183,7 +183,7 @@ const PopUp = ({}: Props) => {
       id: "Customer",
       checked: false,
       categoryType: "Customer",
-      header: "Are you current customer",
+      header: "Are you current customer ?",
     },
     {
       label: "Schedule",
