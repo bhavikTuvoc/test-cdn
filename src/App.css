@@ -13,8 +13,8 @@ body {
 }
 
 :root {
-  --primarColor: #6f3798;
-  --primaryColorHover: rgb(138 103 163);
+  --primarColor: rgb(111, 55, 152); /* done */
+  --primaryColorHover: rgb(138, 103, 163);
   --indicatorColor: rgb(234, 236, 240);
   --textPrimary: #6941c6;
   --textSecondry: #7f56d9;
@@ -24,6 +24,7 @@ body {
   --primaryBtnBg: #7f56d9;
   --grayAmoutColor: #d0d5dd;
   --btnActiveColorBg: #f9f5ff;
+  --indicatorShadow: rgba(158, 119, 237, 0.239);
 }
 
 .CdnPurpleTextPrimary {
@@ -97,7 +98,36 @@ button {
 }
 
 .CdnPurpleIndicatorShadow {
-  box-shadow: 0px 0px 0px 4px #9e77ed3d;
+  box-shadow: 0px 0px 0px 4px var(--indicatorShadow);
+}
+.CdnPurpleActiveColor {
+  fill: var(--textPrimary) !important;
+  stroke: var(--textPrimary) !important;
+}
+.CdnPurpleActiveColor path {
+  fill: var(--textPrimary) !important;
+  stroke: var(--textPrimary) !important;
+}
+.CdnPurpleCompletedColor {
+  fill: var(--textPrimary) !important;
+  stroke: var(--textPrimary) !important;
+}
+
+.CdnPurpleCompletedColorMobile path {
+  fill: var(--textPrimary) !important;
+}
+
+.CdnPurpleLogoSize {
+  width: 134px !important;
+  height: 50px !important;
+}
+.CdnPurpleLogoSize g {
+  fill: var(--textPrimary);
+}
+
+.CdnPurpleCompletedColor path:not([fill-rule="evenodd"]) {
+  fill: var(--textPrimary) !important;
+  stroke: var(--textPrimary) !important;
 }
 
 .CdnPurplePopUpWrapper {
@@ -124,6 +154,21 @@ button {
   height: 100dvh;
 }
 
+.CdnPurpleErroWrapper {
+  max-width: 500px !important;
+  width: 100%;
+  background-color: rgb(255 255 255);
+  color: red;
+  font-weight: 600;
+  font-size: 14px;
+  height: 100dvh;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .CdnPurpleFormContainerSuccesss {
   max-width: 960px;
   width: 100%;
@@ -133,6 +178,22 @@ button {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.CdnPurpleErrorButton {
+  cursor: pointer;
+  background: red;
+  border: 0;
+  outline: 0;
+  padding: 8px 14px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+  margin-top: 15px;
+  text-transform: capitalize;
 }
 
 @media (min-width: 768px) {
@@ -145,6 +206,9 @@ button {
     min-height: 738px;
     height: auto;
     max-height: 100dvh;
+  }
+  .CdnPurpleErroWrapper {
+    height: 500px;
   }
   .CdnPurpleFormContainerSuccesss {
     border-radius: 24px;
@@ -183,9 +247,21 @@ button {
   height: 14px;
 }
 
+.CdnPurpleIndicatorWH32 {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
 .CdnPurpleIndicatorWH {
   width: 32px;
   height: 32px;
+  flex-shrink: 0;
+}
+
+.CdnPurpleIndicatorWHMobile {
+  width: 24px;
+  height: 24px;
 }
 
 .CdnPurpleFormBodyContainer {
@@ -333,7 +409,7 @@ button {
   font-size: 14px;
   height: 36px;
   width: 84px;
-  background-color: var(--textSecondry);
+  background-color: var(--primaryBtnBg);
   color: white;
   border: 1px solid transparent;
   display: flex;
@@ -412,7 +488,7 @@ button {
     flex: 0.64;
     display: flex;
     padding: 0;
-    max-height: 645px;
+    max-height: 660px;
     height: auto;
   }
 
@@ -544,7 +620,7 @@ button {
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -574,7 +650,6 @@ button {
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 16px;
-  padding-top: 16px;
   border-radius: 8px;
 }
 
@@ -606,10 +681,10 @@ button {
     text-align: start;
   }
   .CdnPurpleAccTitle {
-    font-size: 18px;
+    font-size: 17px;
   }
   .CdnPurpleAccBtns {
-    font-size: 18px;
+    font-size: 17px;
     padding: 14px 18px;
   }
   .CdnPurpleRightDetailWrapper {
@@ -712,8 +787,8 @@ button {
 .CdnPurpleIssueImage {
   /* width: 260px; */
   /* height: 195px; */
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
 }
 
@@ -1328,4 +1403,44 @@ input[type="checkbox"] {
   bottom: 3px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* loader */
+.CdnPurpleloaderWrapper {
+  width: 100%;
+  height: 400px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.CdnPurplecustom-animation {
+  animation: rotate 3s linear infinite;
+}
+
+.CdnPurpleLoaderIcon {
+  width: 30px !important;
+  height: 30px !important;
+  fill: var(--primarColor) !important;
+  stroke: var(--primarColor) !important;
+}
+.CdnSvgLoaderPath {
+  /* fill: var(--primarColor) !important; */
+  stroke: var(--primarColor) !important;
+}
+.CdnPurpleIssueTitleInUplaodImage {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--textNormal);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+  100% {
+    transform: rotate(360deg);
+    transform-origin: center;
+  }
 }

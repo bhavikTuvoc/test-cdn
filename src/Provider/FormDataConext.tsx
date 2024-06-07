@@ -1,19 +1,20 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-import { imageData } from "../component/PhotosComp";
-import { question } from "../component/QuestionComp";
+import { ImageDataState } from "../component/PhotosComp";
+import { StepItem } from "../component/QuestionComp";
+import { issueObj } from "../component/AccordianComp";
 
 // Define the shape of the form data and the types for the context operations
 interface FormDataContextType {
   formData: Record<string, any>; // Object structure
   updateFormData: (newData: Record<string, any>) => void; // Function to merge new data into existing form data
-  imageDataOld: imageData[];
-  setimageDataOld: React.Dispatch<React.SetStateAction<imageData[]>>;
-  setDetailsOldData: React.Dispatch<React.SetStateAction<question[]>>;
-  detailsoldData: question[];
-  setIssueDataOld: React.Dispatch<React.SetStateAction<question[]>>;
-  issueDataOld: question[];
-  setDesc: React.Dispatch<React.SetStateAction<string>>;
-  desc: string;
+  imageDataOld: ImageDataState[];
+  setimageDataOld: React.Dispatch<React.SetStateAction<ImageDataState[]>>;
+  setDetailsOldData: React.Dispatch<React.SetStateAction<StepItem[]>>;
+  detailsoldData: StepItem[];
+  setIssueDataOld: React.Dispatch<React.SetStateAction<issueObj[]>>;
+  issueDataOld: issueObj[];
+  setDesc: React.Dispatch<React.SetStateAction<any>>;
+  desc: any;
 }
 
 // Create the context with a default value matching the type
@@ -25,11 +26,13 @@ interface FormDataProviderProps {
 
 // Provider component
 export const FormDataProvider = ({ children }: FormDataProviderProps) => {
-  const [formData, setFormData] = useState<Record<string, any>>({}); // Initialize state with an empty object
-  const [imageDataOld, setimageDataOld] = useState<imageData[]>([]);
-  const [detailsoldData, setDetailsOldData] = useState<question[]>([]);
-  const [issueDataOld, setIssueDataOld] = useState<question[]>([]);
-  const [desc, setDesc] = useState<string>("");
+  const [formData, setFormData] = useState<Record<string, any>>({
+    isCurrentCustomer: "Yes",
+  }); // Initialize state with an empty object
+  const [imageDataOld, setimageDataOld] = useState<ImageDataState[]>([]);
+  const [detailsoldData, setDetailsOldData] = useState<StepItem[]>([]);
+  const [issueDataOld, setIssueDataOld] = useState<issueObj[]>([]);
+  const [desc, setDesc] = useState<any>({});
 
   // Function to update formData
   const updateFormData = (newData: Record<string, any>) => {

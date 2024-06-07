@@ -1,19 +1,15 @@
-import React from "react";
-
-interface IconProps {
-  color?: string;
+type Props = {
   className?: string;
-}
+};
 
-const Active: React.FC<IconProps> = ({
-  color = "none",
-  className = "w-[32px] h-[32px]",
-}) => {
+const ActiveIcon = ({ className }: Props) => {
   return (
     <svg
-      className={className}
+      width="32"
+      height="32"
       viewBox="0 0 32 32"
-      fill={color}
+      fill="none"
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -30,4 +26,4 @@ const Active: React.FC<IconProps> = ({
   );
 };
 
-export default Active;
+export default ActiveIcon;

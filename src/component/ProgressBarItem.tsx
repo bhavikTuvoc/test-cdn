@@ -1,7 +1,7 @@
-import ActiveIndicator from "../assets/Active.svg";
-import DefaultIndicator from "../assets/Default.svg";
-import CompletedIndicator from "../assets/Completed.svg";
-import CompletedIndicatorMobile from "../assets/Completed-Mobile.svg";
+import ActiveIndicator from "../assets/SVGs/ActiveIcon";
+import DefaultIndicator from "../assets/SVGs/Default";
+import CompletedIndicator from "../assets/SVGs/Completed";
+import CompletedIndicatorMobile from "../assets/SVGs/MobileCompleted";
 import { UseFormWatch } from "react-hook-form";
 type Props = {
   label?: string;
@@ -19,28 +19,89 @@ const ProgressBarItem = ({
   watch,
 }: Props) => {
   const formValue = watch();
-
-  function getSelectedOptions(categories: any) {
-    return categories
-      .map((category: any) => {
-        // Filter and map the subCategories that are checked
-        const selectedSubItems = category.subCategories
-          .filter((subCategory: any) => subCategory.checked)
-          .map((subCategory: any) => subCategory.subItem);
-
-        // Only include categories where there is at least one subItem checked
-        if (selectedSubItems.length > 0) {
-          return {
-            item: category.item,
-            selected: selectedSubItems.join(", "),
-          };
-        }
-      })
-      .filter(Boolean); // Remove undefined entries (where no subItem was checked)
+  interface SubIssue {
+    id: number;
+    sub_issue_name: string;
+    checked: boolean;
   }
 
-  const issueOptions = getSelectedOptions(formValue?.Issue);
-  const detailsOptions = getSelectedOptions(formValue?.Details);
+  interface Issue {
+    id: number;
+    issue_name: string;
+    sub_issue: SubIssue[];
+  }
+
+  interface SelectedIssue {
+    item: string;
+    selected: string;
+  }
+
+  const getSelectedIssues = (issues: Issue[]): SelectedIssue[] => {
+    return issues
+      .map((issue) => {
+        const selectedSubIssues = issue.sub_issue
+          .filter((subIssue) => subIssue.checked)
+          .map((subIssue) => subIssue.sub_issue_name);
+
+        if (selectedSubIssues.length > 0) {
+          return {
+            item: issue.issue_name,
+            selected: selectedSubIssues.join(", "),
+          };
+        }
+        return null;
+      })
+      .filter((item) => item !== null) as SelectedIssue[];
+  };
+
+  interface Option {
+    id: string;
+    option_title: string;
+    checked: boolean;
+  }
+
+  interface Question {
+    question: string;
+    options: Option[];
+  }
+
+  interface Issue {
+    id: number;
+    issue_name: string;
+    questions: Question[];
+  }
+
+  interface SelectedOption {
+    item: string;
+    selected: string;
+  }
+
+  const getSelectedOptions = (issues: Issue[]): SelectedOption[] => {
+    return issues
+      .flatMap((issue) =>
+        issue.questions.map((question) => {
+          const selectedOptions = question.options
+            .filter((option) => option.checked)
+            .map((option) => option.option_title);
+
+          if (selectedOptions.length > 0) {
+            return {
+              item: question.question,
+              selected: selectedOptions.join(", "),
+            };
+          }
+          return null;
+        })
+      )
+      .filter((item) => item !== null) as SelectedOption[];
+  };
+  // console.log(watch("Details"));
+  const issueOptions = getSelectedIssues(
+    formValue?.Issue ? formValue?.Issue : []
+  );
+  const detailsOptions = getSelectedOptions(
+    formValue?.Details ? formValue?.Details : []
+  );
 
   const renderDataofIssueIndicator = () => {
     switch (flag) {
@@ -85,13 +146,7 @@ const ProgressBarItem = ({
           </>
         );
       default:
-        return (
-          <img
-            src={DefaultIndicator}
-            alt="active"
-            className="CdnPurpleIndicatorWH"
-          />
-        );
+        return <DefaultIndicator className="CdnPurpleIndicatorWH" />;
     }
   };
   const renderDataofDetailsIndicator = () => {
@@ -137,13 +192,7 @@ const ProgressBarItem = ({
           </>
         );
       default:
-        return (
-          <img
-            src={DefaultIndicator}
-            alt="active"
-            className="CdnPurpleIndicatorWH"
-          />
-        );
+        return <DefaultIndicator className="CdnPurpleIndicatorWH" />;
     }
   };
   const renderDataofIndicator = () => {
@@ -179,59 +228,29 @@ const ProgressBarItem = ({
           </>
         );
       default:
-        return (
-          <img
-            src={DefaultIndicator}
-            alt="active"
-            className="CdnPurpleIndicatorWH"
-          />
-        );
+        return <DefaultIndicator className="CdnPurpleIndicatorWH" />;
     }
   };
 
   const renderContentBasedOnFlag = () => {
     switch (flag) {
       case "Default":
-        return (
-          <img
-            src={DefaultIndicator}
-            alt="default"
-            className="CdnPurpleIndicatorWH"
-          />
-        );
+        return <DefaultIndicator className="CdnPurpleIndicatorWH" />;
       case "Active":
         return (
-          <div className="CdnPurpleIndicatorShadow CdnPurpleRoundedFull CdnPurpleIndicatorWH">
-            <img
-              src={ActiveIndicator}
-              alt="active"
-              className="CdnPurpleIndicatorWH "
-            />
+          <div className="CdnPurpleIndicatorShadow CdnPurpleRoundedFull CdnPurpleIndicatorWH32">
+            <ActiveIndicator className="CdnPurpleIndicatorWH32 CdnPurpleActiveColor" />
           </div>
         );
       case "Completed":
         return (
           <>
-            <img
-              src={CompletedIndicator}
-              alt="Completed"
-              className="CdnPurpleIndicatorWH CdnPurpleCompleteIcon"
-            />
-            <img
-              src={CompletedIndicatorMobile}
-              alt="Completed"
-              className="CdnPurpleIndicatorWH CdnPurpleCompleteIconNotMobile"
-            />
+            <CompletedIndicator className="CdnPurpleIndicatorWH CdnPurpleCompleteIcon CdnPurpleCompletedColor" />
+            <CompletedIndicatorMobile className="CdnPurpleIndicatorWH CdnPurpleCompleteIconNotMobile CdnPurpleCompletedColorMobile" />
           </>
         );
       default:
-        return (
-          <img
-            src={DefaultIndicator}
-            alt="active"
-            className="CdnPurpleIndicatorWH"
-          />
-        );
+        return <DefaultIndicator className="CdnPurpleIndicatorWH" />;
     }
   };
   return (
@@ -246,12 +265,12 @@ const ProgressBarItem = ({
           {flag === "Completed" ? (
             <div
               className={`CdnPurplelineBar CdnPurpleBgPrimary CdnPurpleMobileNone`}
-              style={{ display: lastItem ? "none" : "" }}
+              style={{ opacity: lastItem ? "0" : "1" }}
             />
           ) : (
             <div
               className={`CdnPurplelineBar CdnPurpleBgIndicatorColor CdnPurpleMobileNone`}
-              style={{ display: lastItem ? "none" : "" }}
+              style={{ opacity: lastItem ? "0" : "1" }}
             />
           )}
         </div>
@@ -275,22 +294,3 @@ const ProgressBarItem = ({
 };
 
 export default ProgressBarItem;
-
-// {
-//   //   <ul className="CdnPurpleulList">
-//   // {detailsOptions.map((detail: any) => (
-//   //   <li key={detail.item}>
-//   //     {detail.item}: <span>{detail.selected}</span>
-//   //   </li>
-//   // ))}
-//   // </ul>
-// }
-// {/* <div
-//           className={`CdnPurpleIndicatorDetail ${
-//             flag === "Active" || flag === "Completed"
-//               ? "CdnPurpleTextSecondry"
-//               : "CdnPurpleTextNormalSec"
-//           }`}
-//         >
-//           {detail}
-//         </div> */}

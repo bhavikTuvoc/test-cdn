@@ -6,14 +6,17 @@ import { IndividualDetailType } from "./types";
 import CustomerCategoryComp from "./CustomerCategoryComp";
 import ScheduleComp from "./ScheduleComp";
 import ConfirmationComp from "./ConfirmationComp";
+import { useAppSelector } from "../redux/store";
+import LoaderComp from "./LoaderComp";
 
 type Props = {
-  data: IndividualDetailType | any;
-  control: any;
-  setValue: any;
+  data?: IndividualDetailType | any;
+  control?: any;
+  setValue?: any;
   register: UseFormRegister<any>;
   watch: UseFormWatch<any>;
   child: any;
+  currentId: number;
 };
 
 const RightCategoryComp = ({
@@ -23,83 +26,109 @@ const RightCategoryComp = ({
   register,
   watch,
   child,
+  currentId,
 }: Props) => {
-  const header = data.header;
-
+  const header =
+    currentId === 1
+      ? "Please select your issue"
+      : currentId === 2
+      ? "Issue type"
+      : currentId === 3
+      ? "Uplaod photos"
+      : currentId === 4
+      ? "Are you current customer ?"
+      : currentId === 5
+      ? "Schedule"
+      : currentId === 6
+      ? "Confirmation"
+      : "";
+  const loading = useAppSelector((state) => state.issue.loading);
+  const dataStep1 = useAppSelector((state) => state.issue.formState?.step1); //issue and subissues listing
+  const dataStep2 = useAppSelector((state) => state.issue.formState?.step2); //issue and subissues listing
   return (
-    <div className="CdnPurpleRightDetailWrapper ">
-      <div
-        className={`${
-          data && data?.categoryType === "Confirm" && "CdnPurpleBorderB"
-        } CdnPurpleShowMobile`}
-      >
-        {data && data?.categoryType === "Confirm" && <>{child}</>}
-      </div>
-      <h3
-        className={`CdnPurpleRightDetailHeader ${
-          data &&
-          data?.categoryType === "Confirm" &&
-          "CdnPurpleHeaderHideMobileConfirm"
-        }`}
-      >
-        {header}
-      </h3>
-      {data && data?.categoryType === "Accordian" && (
-        <div className="CdnPurpleAccWrpper">
-          <AccordianComp
-            watch={watch}
-            setValue={setValue}
-            accChild={data.category}
-          />
-        </div>
-      )}
-      {data && data?.categoryType === "Question" && (
-        <div className="CdnPurpleQueMainWrapper">
-          <QuestionComp setValue={setValue} questiondata={data.category} />
-        </div>
-      )}
+    <>
+      {loading ? (
+        <LoaderComp />
+      ) : (
+        <div className="CdnPurpleRightDetailWrapper ">
+          <div
+            className={`${
+              currentId === 6 && "CdnPurpleBorderB"
+            } CdnPurpleShowMobile`}
+          >
+            {currentId === 6 && <>{child}</>}
+          </div>
+          <h3
+            className={`CdnPurpleRightDetailHeader ${
+              data &&
+              data?.categoryType === "Confirm" &&
+              "CdnPurpleHeaderHideMobileConfirm"
+            }`}
+          >
+            {header}
+          </h3>
+          {currentId === 1 && (
+            <div className="CdnPurpleAccWrpper">
+              <AccordianComp
+                watch={watch}
+                setValue={setValue}
+                issueList={dataStep1}
+              />
+            </div>
+          )}
+          {currentId === 2 && (
+            <div className="CdnPurpleQueMainWrapper">
+              <QuestionComp setValue={setValue} questiondata={dataStep2} />
+            </div>
+          )}
 
-      {data && data?.categoryType === "Photo" && (
-        <div className="CdnPurpleQueMainWrapper">
-          {data?.category.map((item: any) => (
-            <PhotosComp
-              key={item.item}
-              accChild={item.subCategories}
-              accTitle={item.item}
-              control={control}
-              setValue={setValue}
-              register={register}
-              watch={watch}
-            />
-          ))}
-        </div>
-      )}
+          {currentId === 3 && (
+            <div className="CdnPurpleQueMainWrapper">
+              {data?.category.map((item: any) => (
+                <PhotosComp
+                  key={item.item}
+                  accChild={item.subCategories}
+                  accTitle={item.item}
+                  control={control}
+                  setValue={setValue}
+                  register={register}
+                  watch={watch}
+                />
+              ))}
+            </div>
+          )}
 
-      {data && data?.categoryType === "Customer" && (
-        <div className="CdnPurpleQueMainWrapper">
-          <CustomerCategoryComp
-            register={register}
-            watch={watch}
-            setValue={setValue}
-          />
-        </div>
-      )}
+          {currentId === 4 && (
+            <div className="CdnPurpleQueMainWrapper">
+              <CustomerCategoryComp
+                register={register}
+                watch={watch}
+                setValue={setValue}
+              />
+            </div>
+          )}
 
-      {data && data?.categoryType === "Schedule" && (
-        <div className="CdnPurpleQueMainWrapper">
-          <ScheduleComp register={register} watch={watch} setValue={setValue} />
+          {currentId === 5 && (
+            <div className="CdnPurpleQueMainWrapper">
+              <ScheduleComp
+                register={register}
+                watch={watch}
+                setValue={setValue}
+              />
+            </div>
+          )}
+          {currentId === 6 && (
+            <div className="CdnPurpleQueMainWrapper">
+              <ConfirmationComp
+                register={register}
+                watch={watch}
+                setValue={setValue}
+              />
+            </div>
+          )}
         </div>
       )}
-      {data && data?.categoryType === "Confirm" && (
-        <div className="CdnPurpleQueMainWrapper">
-          <ConfirmationComp
-            register={register}
-            watch={watch}
-            setValue={setValue}
-          />
-        </div>
-      )}
-    </div>
+    </>
   );
 };
 

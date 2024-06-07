@@ -7,6 +7,10 @@ import {
 import uncheckCircle from "../assets/un-check.svg";
 import checkCircle from "../assets/check-circle.svg";
 import Input from "./InputComponent";
+import { useFormData } from "../Provider/FormDataConext";
+import { useAppDispatch, useAppSelector } from "../redux/store";
+import { clearErrorMsg } from "../redux/data/issueSlice";
+import { useEffect } from "react";
 
 type Props = {
   setValue: UseFormSetValue<any>;
@@ -51,9 +55,38 @@ export function validatePhoneNumberInput(event: {
 const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
   const currentCustomerStatus = watch("currenCustomerStatus");
 
+  const { updateFormData } = useFormData();
+  const dispatch = useAppDispatch();
   const handleSelectedButton = (val: string) => {
     setValue("currenCustomerStatus", val);
+    updateFormData({ isCurrentCustomer: `${val}` });
+    dispatch(clearErrorMsg());
   };
+
+  const isValidateUser = useAppSelector((state) => state.issue.isValidateUser);
+  const errorMsg = useAppSelector((state) => state.issue.errorMsg);
+
+  const yesData = watch("yes");
+  useEffect(() => {
+    if (currentCustomerStatus === "Yes") {
+      updateFormData({ yesData: { phone: yesData?.oldphone || "" } });
+    }
+  }, [yesData]);
+  const noData = watch("no");
+  useEffect(() => {
+    if (currentCustomerStatus === "No") {
+      const dataToUpdate = {
+        name: noData?.name,
+        email: noData?.email,
+        phone: noData?.newphone,
+        address: noData?.address,
+        tenant: 9,
+      };
+      updateFormData({
+        noData: dataToUpdate,
+      });
+    }
+  }, [noData]);
 
   return (
     <div className="CdnPurpleCustomerWrapper">
@@ -91,6 +124,36 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
           {"No"}
         </button>
       </div>
+      {isValidateUser === "No" &&
+        currentCustomerStatus === "No" &&
+        errorMsg !== "" && (
+          <p
+            style={{
+              color: "red",
+              fontSize: "13px",
+              fontWeight: "bold",
+              paddingTop: "10px",
+            }}
+          >
+            {errorMsg}
+          </p>
+        )}
+      {isValidateUser === "No" &&
+        currentCustomerStatus === "Yes" &&
+        errorMsg !== "" && (
+          <p
+            style={{
+              color: "red",
+              fontSize: "13px",
+              fontWeight: "bold",
+              paddingTop: "10px",
+            }}
+          >
+            {errorMsg === undefined
+              ? "The phone number that you entered is not correct"
+              : errorMsg}
+          </p>
+        )}
       <div className="CdnPurpleCustomerFieldsWrapper">
         {currentCustomerStatus === "Yes" && (
           <>
@@ -101,11 +164,11 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
               <Input
                 className="CdnPurpleInputCustomerInputTag"
                 id="phone"
-                name="oldphone"
+                name="yes.oldphone"
                 type="tel"
                 register={register}
                 placeholder="Phone number"
-                onKeyDown={validatePhoneNumberInput}
+                // onKeyDown={validatePhoneNumberInput}
               />
             </div>
           </>
@@ -120,7 +183,7 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
               <Input
                 className="CdnPurpleInputCustomerInputTag"
                 id="name"
-                name="name"
+                name="no.name"
                 type="text"
                 register={register}
                 placeholder="Enter your name"
@@ -133,7 +196,7 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
               <Input
                 className="CdnPurpleInputCustomerInputTag"
                 id="email"
-                name="email"
+                name="no.email"
                 type="email"
                 register={register}
                 placeholder="Enter your email"
@@ -146,7 +209,7 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
               <Input
                 className="CdnPurpleInputCustomerInputTag"
                 id="address"
-                name="address"
+                name="no.address"
                 type="text"
                 register={register}
                 placeholder="Address"
@@ -159,12 +222,12 @@ const CustomerCategoryComp = ({ setValue, register, watch }: Props) => {
               <Input
                 className="CdnPurpleInputCustomerInputTag"
                 id="phone"
-                name="newphone"
+                name="no.newphone"
                 type="tel"
                 register={register}
                 placeholder="Phone number"
                 pattern="[\d\s()+-]+"
-                onKeyDown={validatePhoneNumberInput}
+                // onKeyDown={validatePhoneNumberInput}
               />
             </div>
           </>

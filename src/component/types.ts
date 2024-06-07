@@ -11,7 +11,7 @@ type Category = {
 
 export type IndividualDetailType = {
   label: string;
-  id: string;
+  id: number;
   checked: boolean;
   categoryType: string; // "Accordion" or "Question"
   category: Category[];
@@ -21,7 +21,7 @@ export type IndividualDetailType = {
 type FlagType = "Default" | "Active" | "Completed";
 
 export type StepDetail = {
-  id: string;
+  id: number;
   label: string;
   detail: string;
   flag: FlagType;

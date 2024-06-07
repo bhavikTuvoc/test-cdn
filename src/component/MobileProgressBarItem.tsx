@@ -1,6 +1,6 @@
-import ActiveIndicator from "../assets/Active.svg";
-import DefaultIndicator from "../assets/Default.svg";
-import CompletedIndicator from "../assets/Completed.svg";
+import ActiveIndicator from "../assets/SVGs/ActiveIcon";
+import DefaultIndicator from "../assets/SVGs/Default";
+import CompletedIndicator from "../assets/SVGs/Completed";
 import { UseFormWatch } from "react-hook-form";
 type Props = {
   label?: string;
@@ -19,26 +19,84 @@ const MobileProgressBarItem = ({
 }: Props) => {
   const formValue = watch();
 
-  function getSelectedOptions(categories: any) {
-    return categories
-      .map((category: any) => {
-        // Filter and map the subCategories that are checked
-        const selectedSubItems = category.subCategories
-          .filter((subCategory: any) => subCategory.checked)
-          .map((subCategory: any) => subCategory.subItem);
-
-        // Only include categories where there is at least one subItem checked
-        if (selectedSubItems.length > 0) {
-          return {
-            item: category.item,
-            selected: selectedSubItems.join(", "),
-          };
-        }
-      })
-      .filter(Boolean); // Remove undefined entries (where no subItem was checked)
+  interface SubIssue {
+    id: number;
+    sub_issue_name: string;
+    checked: boolean;
   }
 
-  const issueOptions = getSelectedOptions(formValue?.Issue);
+  interface Issue {
+    id: number;
+    issue_name: string;
+    sub_issue: SubIssue[];
+  }
+
+  interface SelectedIssue {
+    item: string;
+    selected: string;
+  }
+
+  const getSelectedIssues = (issues: Issue[]): SelectedIssue[] => {
+    return issues
+      .map((issue) => {
+        const selectedSubIssues = issue.sub_issue
+          .filter((subIssue) => subIssue.checked)
+          .map((subIssue) => subIssue.sub_issue_name);
+
+        if (selectedSubIssues.length > 0) {
+          return {
+            item: issue.issue_name,
+            selected: selectedSubIssues.join(", "),
+          };
+        }
+        return null;
+      })
+      .filter((item) => item !== null) as SelectedIssue[];
+  };
+
+  interface Option {
+    id: string;
+    option_title: string;
+    checked: boolean;
+  }
+
+  interface Question {
+    question: string;
+    options: Option[];
+  }
+
+  interface Issue {
+    id: number;
+    issue_name: string;
+    questions: Question[];
+  }
+
+  interface SelectedOption {
+    item: string;
+    selected: string;
+  }
+
+  const getSelectedOptions = (issues: Issue[]): SelectedOption[] => {
+    return issues
+      .flatMap((issue) =>
+        issue.questions.map((question) => {
+          const selectedOptions = question.options
+            .filter((option) => option.checked)
+            .map((option) => option.option_title);
+
+          if (selectedOptions.length > 0) {
+            return {
+              item: question.question,
+              selected: selectedOptions.join(", "),
+            };
+          }
+          return null;
+        })
+      )
+      .filter((item) => item !== null) as SelectedOption[];
+  };
+  // console.log(watch("Details"));
+  const issueOptions = getSelectedIssues(formValue?.Issue);
   const detailsOptions = getSelectedOptions(formValue?.Details);
 
   const renderDataofIssueIndicator = () => {
@@ -84,13 +142,7 @@ const MobileProgressBarItem = ({
           </>
         );
       default:
-        return (
-          <img
-            src={DefaultIndicator}
-            alt="active"
-            className="CdnPurpleIndicatorWH"
-          />
-        );
+        return <DefaultIndicator className="CdnPurpleIndicatorWH" />;
     }
   };
   const renderDataofDetailsIndicator = () => {
@@ -136,13 +188,7 @@ const MobileProgressBarItem = ({
           </>
         );
       default:
-        return (
-          <img
-            src={DefaultIndicator}
-            alt="active"
-            className="CdnPurpleIndicatorWH"
-          />
-        );
+        return <DefaultIndicator className="CdnPurpleIndicatorWH" />;
     }
   };
   const renderDataofIndicator = () => {
@@ -178,51 +224,25 @@ const MobileProgressBarItem = ({
           </>
         );
       default:
-        return (
-          <img
-            src={DefaultIndicator}
-            alt="active"
-            className="CdnPurpleIndicatorWH"
-          />
-        );
+        return <DefaultIndicator className="CdnPurpleIndicatorWH" />;
     }
   };
   const renderContentBasedOnFlag = () => {
     switch (flag) {
       case "Default":
-        return (
-          <img
-            src={DefaultIndicator}
-            alt="default"
-            className="CdnPurpleIndicatorWH"
-          />
-        );
+        return <DefaultIndicator className="CdnPurpleIndicatorWH" />;
       case "Active":
         return (
           <div className="CdnPurpleIndicatorShadow CdnPurpleRoundedFull CdnPurpleIndicatorWH">
-            <img
-              src={ActiveIndicator}
-              alt="active"
-              className="CdnPurpleIndicatorWH "
-            />
+            <ActiveIndicator className="CdnPurpleIndicatorWH CdnPurpleActiveColor" />
           </div>
         );
       case "Completed":
         return (
-          <img
-            src={CompletedIndicator}
-            alt="Completed"
-            className="CdnPurpleIndicatorWH"
-          />
+          <CompletedIndicator className="CdnPurpleIndicatorWH CdnPurpleCompletedColor" />
         );
       default:
-        return (
-          <img
-            src={DefaultIndicator}
-            alt="active"
-            className="CdnPurpleIndicatorWH"
-          />
-        );
+        return <DefaultIndicator className="CdnPurpleIndicatorWH" />;
     }
   };
   return (

@@ -1,17 +1,21 @@
-import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import "./App.css";
 import PopUp from "./component/PopUp";
 import { FormDataProvider } from "./Provider/FormDataConext";
+import { store } from "./redux/store";
+import ReactDOM from "react-dom";
 
 function App() {
   return (
     // <div className="CdnPurpleApp app-container" style={{ display: "none" }}>
     <div className="CdnPurpleApp app-container" style={{ display: "block" }}>
-      <div className="CdnPurpleBgBlur CdnPurplePopUpWrapper">
-        <FormDataProvider>
-          <PopUp />
-        </FormDataProvider>
-      </div>
+      <Provider store={store}>
+        <div className="CdnPurpleBgBlur CdnPurplePopUpWrapper">
+          <FormDataProvider>
+            <PopUp />
+          </FormDataProvider>
+        </div>
+      </Provider>
     </div>
   );
 }
@@ -22,8 +26,7 @@ function setupApp() {
   document.body.appendChild(rootElement);
   ReactDOM.render(<App />, rootElement);
 
-  window.toggleApp = (string) => {
-    console.log(string);
+  window.toggleApp = () => {
     const appContainer = document.querySelector(
       ".app-container"
     ) as HTMLElement;
@@ -34,7 +37,7 @@ function setupApp() {
   };
 
   // Optionally, you can toggle the app to show or hide it initially here
-  window.toggleApp("hello");
+  window.toggleApp();
 }
 
 export const handleClose = () => {

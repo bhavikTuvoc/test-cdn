@@ -25,12 +25,10 @@ const DragAndDropComp: React.FC<DragAndDropCompProps> = ({
   allowMultiple = true,
   onFileData,
   inputRef,
-  setValue,
   control,
 }) => {
   const [error, setError] = useState(false);
   const [isDragOver, setIsDragOver] = useState(false);
-
   const handleFilesChange = (selectedFiles: File[]) => {
     // Generate URLs for image preview
     // const fileUrls = selectedFiles.map((file) => URL.createObjectURL(file));
@@ -42,7 +40,6 @@ const DragAndDropComp: React.FC<DragAndDropCompProps> = ({
 
     if (onFileData) {
       onFileData(filesWithUrls);
-      setValue("files", filesWithUrls, { shouldValidate: true });
     }
   };
 
@@ -83,7 +80,6 @@ const DragAndDropComp: React.FC<DragAndDropCompProps> = ({
   return (
     <>
       <label
-        htmlFor="photo"
         onDragOver={handleDragOver}
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
@@ -109,14 +105,11 @@ const DragAndDropComp: React.FC<DragAndDropCompProps> = ({
           render={({ field: { onBlur, ref } }) => (
             <input
               type="file"
-              id="photo"
               multiple={allowMultiple}
               onChange={(e) => {
                 const files = Array.from(e.target.files || []);
                 const filteredFiles = files.filter((file) =>
-                  ["image/png", "image/jpeg", "image/svg+xml"].includes(
-                    file.type
-                  )
+                  ["image/png", "image/jpeg", "image/jpg"].includes(file.type)
                 );
                 if (!allowMultiple && filteredFiles.length > 1) {
                   setError(true);
@@ -128,7 +121,7 @@ const DragAndDropComp: React.FC<DragAndDropCompProps> = ({
               onBlur={onBlur}
               ref={ref}
               style={{ display: "none" }}
-              accept=".png, .jpg, .jpeg, .svg"
+              accept=".png, .jpg, .jpeg"
             />
           )}
         />

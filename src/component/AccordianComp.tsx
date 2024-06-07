@@ -5,44 +5,58 @@ import uncheckCircle from "../assets/un-check.svg";
 import checkCircle from "../assets/check-circle.svg";
 import { UseFormSetValue, UseFormWatch } from "react-hook-form";
 import { useCallback, useEffect, useState } from "react";
-import { question } from "./QuestionComp";
 import { useFormData } from "../Provider/FormDataConext";
-import { SubCategory } from "./types";
+import { useAppSelector } from "../redux/store";
+
+export type issueObj = {
+  id: number;
+  issue_name: string;
+  sub_issue: subIssueObj[];
+};
+
+type subIssueObj = {
+  id: number;
+  sub_issue_name: string;
+  checked: boolean;
+};
 
 type Props = {
-  accChild: question[];
+  // issueList: question[];
+  issueList: issueObj[];
   setValue: UseFormSetValue<any>;
   watch: UseFormWatch<any>;
 };
 
-const AccordianComp = ({ accChild = [], setValue, watch }: Props) => {
+const AccordianComp = ({ issueList = [], setValue, watch }: Props) => {
   const { updateFormData, setIssueDataOld, issueDataOld } = useFormData();
 
   const getInitialState = () => {
-    const anyChecked = issueDataOld.some((q: question) =>
-      q.subCategories.some((sc: SubCategory) => sc.checked)
-    );
-    return !anyChecked ? accChild : issueDataOld;
+    const anyChecked =
+      issueDataOld &&
+      issueDataOld.some((q: issueObj) =>
+        q.sub_issue.some((sc: subIssueObj) => sc.checked)
+      );
+    return !anyChecked ? issueList : issueDataOld;
   };
 
-  const [issueData, setIssueData] = useState<question[]>(getInitialState);
-
+  const [issueData, setIssueData] = useState<issueObj[]>(getInitialState);
+  const apiState = useAppSelector((state) => state.issue.apiState);
   useEffect(() => {
-    updateFormData({ Details: issueData });
+    updateFormData({ Issue: issueData });
     setIssueDataOld(issueData);
     setValue("Issue", issueData);
   }, [issueData]);
 
   //options are multiselected
   const handleSelect = useCallback(
-    (questionItem: string, selectedId: string) => {
+    (questionItem: number, selectedId: number) => {
       setIssueData((currentData) =>
-        currentData.map((question) => ({
+        currentData.map((question: issueObj) => ({
           ...question,
-          subCategories: question.subCategories.map((subCategory) => ({
+          sub_issue: question.sub_issue.map((subCategory) => ({
             ...subCategory,
             checked:
-              question.item === questionItem && subCategory.id === selectedId
+              question.id === questionItem && subCategory.id === selectedId
                 ? !subCategory.checked // Toggle the checked state
                 : subCategory.checked, // Keep the existing state for other subcategories
           })),
@@ -52,9 +66,9 @@ const AccordianComp = ({ accChild = [], setValue, watch }: Props) => {
     []
   );
 
-  const active: string[] = watch("accordianState");
+  const active: number[] = watch("accordianState");
 
-  const toggleHandleAccordian = (targetedId: string) => {
+  const toggleHandleAccordian = (targetedId: number) => {
     if (active.includes(targetedId)) {
       setValue(
         "accordianState",
@@ -64,15 +78,16 @@ const AccordianComp = ({ accChild = [], setValue, watch }: Props) => {
       setValue("accordianState", [...active, targetedId]);
     }
   };
+
   return (
     <>
       {issueData &&
-        issueData.map((item: question) => (
-          <div className=" CdnPurpleAccordianDiv" key={item.item}>
+        issueData.map((item: issueObj, index: number) => (
+          <div className=" CdnPurpleAccordianDiv" key={index}>
             <div className="CdnPurpleAccordianChildren">
               <div
                 className=" CdnPurpleAccordianInnerdiv "
-                onClick={() => toggleHandleAccordian(item.item)}
+                onClick={() => toggleHandleAccordian(item.id)}
               >
                 <div className="CdnPurpleAccordianIconDiv ">
                   <img
@@ -80,42 +95,46 @@ const AccordianComp = ({ accChild = [], setValue, watch }: Props) => {
                     alt="img"
                     className="CdnPurpleAccIcon"
                   />
-                  <p className="CdnPurpleAccTitle">{item.item}</p>
+                  <p className="CdnPurpleAccTitle">{item.issue_name}</p>
                 </div>
                 <div className="CdnPurpleArrowWrapper">
-                  {active.includes(item.item) ? (
+                  {active.includes(item.id) ? (
                     <img src={upArrow} alt="up" />
                   ) : (
                     <img src={downArrow} alt="dn" />
                   )}
                 </div>
               </div>
-              {active.includes(item.item) && (
+              {active.includes(item.id) && (
                 <div className="CdnPurpleAccDetailDiv">
-                  {item.subCategories.map((acc: any, index: number) => (
-                    <button
-                      type="button"
-                      className={`CdnPurpleAccBtns ${
-                        acc.checked
-                          ? "CdnPurpleAccBtnActive"
-                          : "CdnPurpleAccBtnDefault"
-                      }`}
-                      key={index}
-                      onClick={() => handleSelect(item.item, acc.id)}
-                    >
-                      <img
-                        style={{ width: "24px", height: "24px" }}
-                        src={acc.checked ? checkCircle : uncheckCircle}
-                        alt={acc.checked ? "checked" : "unchecked"}
-                      />
-                      <p>{acc.subItem}</p>
-                    </button>
-                  ))}{" "}
+                  {item?.sub_issue?.length > 0 &&
+                    item.sub_issue.map((acc: subIssueObj, index: number) => (
+                      <button
+                        type="button"
+                        className={`CdnPurpleAccBtns ${
+                          acc.checked
+                            ? "CdnPurpleAccBtnActive"
+                            : "CdnPurpleAccBtnDefault"
+                        }`}
+                        key={index}
+                        onClick={() => handleSelect(item.id, acc.id)}
+                      >
+                        <img
+                          style={{ width: "22px", height: "22px" }}
+                          src={acc.checked ? checkCircle : uncheckCircle}
+                          alt={acc.checked ? "checked" : "unchecked"}
+                        />
+                        <p>{acc.sub_issue_name}</p>
+                      </button>
+                    ))}{" "}
                 </div>
               )}
             </div>
           </div>
         ))}
+      {issueData && issueData.length === 0 && apiState === "succeeded" && (
+        <p>No issues to display</p>
+      )}
     </>
   );
 };

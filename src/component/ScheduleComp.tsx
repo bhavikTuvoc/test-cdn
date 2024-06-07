@@ -15,15 +15,16 @@ type Props = {
 };
 export type slotButtonArrayType = {
   id: string;
-  slot: string;
+  start: string;
+  end: string;
 };
 
 const ScheduleComp = ({ register, setValue }: Props) => {
   const slotButtonsArray: slotButtonArrayType[] = [
-    { id: "button1", slot: "7:00am - 9:00am" },
-    { id: "button2", slot: "1:00am - 3:00am" },
-    { id: "button3", slot: "5:00am - 7:00am" },
-    { id: "button4", slot: "8:00am - 10:00am" },
+    { id: "button1", start: "07:00:00", end: "09:00:00" },
+    { id: "button2", start: "01:00:00", end: "03:00:00" },
+    { id: "button3", start: "05:00:00", end: "07:00:00" },
+    { id: "button4", start: "08:00:00", end: "10:00:00" },
   ];
 
   const [slot, setSlot] = useState<string>();
@@ -34,7 +35,8 @@ const ScheduleComp = ({ register, setValue }: Props) => {
     const selectedSlot = slotButtonsArray.find((item) => item.id === id);
     setValue("slotAndDate", {
       date: slotDate.toISOString(),
-      slot: selectedSlot?.slot,
+      start: selectedSlot?.start,
+      end: selectedSlot?.end,
     });
   };
 
@@ -55,11 +57,11 @@ const ScheduleComp = ({ register, setValue }: Props) => {
               onClick={() => handleSelectedButton(`${s.id}`)}
             >
               <img
-                style={{ width: "24px", height: "24px" }}
+                style={{ width: "22px", height: "22px" }}
                 src={s.id === `${slot}` ? checkCircle : uncheckCircle}
                 alt={s.id === `${slot}` ? "checked" : "unchecked"}
               />
-              <span>{s.slot}</span>
+              <span>{`${s.start} - ${s.end}`}</span>
             </button>
           ))}
       </div>
